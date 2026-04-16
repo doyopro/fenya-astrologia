@@ -3,279 +3,84 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FE·NYA | Lo humano del cosmos</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@200;300;400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
         rel="stylesheet">
 
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        cal: "#FBFBF9",
-                        arena: "#F4F1EB",
-                        carbon: "#181818",
-                        gris: "#5C5C5C",
-                        dorado: "#9B8258", /* Ocre exacto del PDF */
-                        line: "rgba(0, 0, 0, 0.12)"
-                    },
-                    fontFamily: {
-                        serif: ['Cormorant Garamond', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    }
+                    colors: { cal: "#FBFBF9", arena: "#F4F1EB", carbon: "#181818", gris: "#5C5C5C", dorado: "#9B8258" },
+                    fontFamily: { serif: ['Playfair Display', 'serif'], sans: ['Montserrat', 'sans-serif'] }
                 }
             }
         }
     </script>
-
-    <style>
-        /* ==========================================================================
-           1. SISTEMA BILINGÜE NATIVO Y ESTRICTO (Imposible duplicación visual)
-           ========================================================================== */
-        .lang-en {
-            display: none !important;
-        }
-
-        html[data-lang="en"] .lang-en {
-            display: block !important;
-        }
-
-        html[data-lang="en"] span.lang-en,
-        html[data-lang="en"] a.lang-en {
-            display: inline-block !important;
-        }
-
-        html[data-lang="en"] .lang-es {
-            display: none !important;
-        }
-
-        /* ==========================================================================
-           2. FONDOS DE LANZAROTE (Vinculados a tus imágenes locales)
-           ========================================================================== */
-        /* Textura táctil invisible (Efecto Papel/Mineral) para matar el brillo de la pantalla */
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.035;
-            background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
-        }
-
-        /* En caso de que no carguen tus fotos locales, cargará un color base o textura abstracta segura */
-        .bg-roca-volcanica {
-            background-color: #181818;
-            background-image: linear-gradient(rgba(24, 24, 24, 0.85), rgba(24, 24, 24, 0.9)),
-                url('img/piedra.png'),
-                url('https://images.unsplash.com/photo-1546948630-1149ea60dc86?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .bg-paisaje-fade {
-            background-color: #FBFBF9;
-            background-image: linear-gradient(to bottom, #FBFBF9 0%, rgba(251, 251, 249, 0.85) 40%, rgba(251, 251, 249, 0) 100%),
-                url('img/paisaje.jpeg'),
-                url('https://images.unsplash.com/photo-1614088916327-0243e8ea2a08?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center bottom;
-        }
-
-        .bg-la-geria {
-            background-color: #181818;
-            background-image: linear-gradient(rgba(24, 24, 24, 0.5), rgba(24, 24, 24, 0.85)),
-                url('img/geria.jpeg'),
-                url('https://images.unsplash.com/photo-1584313506240-5a1147a46fa3?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* ==========================================================================
-           3. UX/UI Y DISEÑO DE COMPONENTES EDITORIALES
-           ========================================================================== */
-        /* Aparición cinematográfica al hacer scroll */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Textos Editoriales (Copy) */
-        .text-editorial {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.15rem;
-            color: #5C5C5C;
-            line-height: 1.8;
-            margin-bottom: 1.8rem;
-            font-weight: 300;
-        }
-
-        .text-editorial strong {
-            color: #181818;
-            font-weight: 500;
-        }
-
-        /* Imagen de la Fundadora (Offset Design) */
-        .img-offset-container {
-            position: relative;
-            max-width: 450px;
-            margin: 0 auto;
-        }
-
-        .img-offset-border {
-            position: absolute;
-            top: 24px;
-            left: 24px;
-            right: -24px;
-            bottom: -24px;
-            border: 1px solid rgba(0, 0, 0, 0.12);
-            background-color: #F4F1EB;
-            z-index: 0;
-        }
-
-        .img-offset-container img {
-            position: relative;
-            z-index: 1;
-            filter: sepia(5%) grayscale(20%);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            object-fit: cover;
-            aspect-ratio: 4/5;
-            width: 100%;
-            background-color: #FBFBF9;
-            /* Si falla la imagen, muestra color base */
-        }
-
-        /* Botones de acción */
-        .btn-editorial {
-            display: inline-block;
-            padding: 1.2rem 3.5rem;
-            border: 1px solid #181818;
-            color: #181818;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            transition: all 0.4s ease;
-            background: transparent;
-        }
-
-        .btn-editorial:hover {
-            background-color: #181818;
-            color: #FBFBF9;
-        }
-
-        /* Enlaces del Menú (Underline Hover) */
-        .nav-link {
-            position: relative;
-            color: rgba(255, 255, 255, 0.7);
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #FBFBF9;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -6px;
-            left: 50%;
-            background-color: #9B8258;
-            transition: all 0.4s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-    </style>
 </head>
 
-<body class="bg-cal text-carbon font-sans antialiased selection:bg-dorado/20">
+<body class="font-sans font-light text-carbon">
 
     <header
-        class="fixed top-0 w-full flex flex-col md:flex-row justify-between items-center px-8 md:px-16 py-4 bg-roca-volcanica z-50 text-cal border-b border-white/5 shadow-md">
-
+        class="fixed top-0 w-full flex justify-between items-center px-8 py-5 bg-header-roca z-50 text-white shadow-sm">
         <a href="#"
-            class="flex items-center font-serif text-[1.6rem] tracking-[0.15em] font-medium text-cal mb-4 md:mb-0">
-            FE<span class="w-1.5 h-1.5 bg-dorado rounded-full mx-[2px]"></span>NYA
+            class="font-serif text-2xl tracking-widest uppercase hover:text-dorado transition-colors font-normal">
+            FE<span class="punto-dorado"></span>NYA
         </a>
-
-        <nav class="hidden md:flex items-center gap-12 font-sans text-[0.8rem] tracking-[0.2em] uppercase font-light">
-            <a href="#fundadora" class="nav-link lang-es">La Fundadora</a>
-            <a href="#fundadora" class="nav-link lang-en">The Founder</a>
-
-            <a href="#lecturas" class="nav-link lang-es">Lecturas</a>
-            <a href="#lecturas" class="nav-link lang-en">Readings</a>
-
-            <a href="#experiencias" class="nav-link lang-es">Experiencias</a>
-            <a href="#experiencias" class="nav-link lang-en">Experiences</a>
+        <nav class="hidden md:flex gap-10 text-[0.7rem] uppercase tracking-[0.2em] font-medium">
+            <a href="#fundadora" class="hover:text-dorado transition-colors"><span class="lang-es">La
+                    Fundadora</span><span class="lang-en">Founder</span></a>
+            <a href="services.html" class="hover:text-dorado transition-colors"><span class="lang-es">Lecturas y
+                    Servicios</span><span class="lang-en">Readings & Services</span></a>
+            <a href="#experiencias" class="hover:text-dorado transition-colors"><span
+                    class="lang-es">Experiencias</span><span class="lang-en">Experiences</span></a>
         </nav>
-
-        <div class="flex items-center gap-3 text-[0.8rem] tracking-[0.15em] text-white/40 font-sans mt-2 md:mt-0">
-            <button onclick="setLang('es')" id="btn-es"
-                class="text-cal border-b border-dorado pb-0.5 hover:text-white transition-colors">ES</button>
+        <div class="flex gap-4 text-xs tracking-widest text-white/50 font-medium">
+            <button onclick="setLang('es')" id="btn-es" class="hover:text-white transition-colors">ES</button>
             <span class="opacity-30">|</span>
-            <button onclick="setLang('en')" id="btn-en" class="pb-0.5 hover:text-white transition-colors">EN</button>
+            <button onclick="setLang('en')" id="btn-en" class="hover:text-white transition-colors">EN</button>
         </div>
     </header>
 
-    <main>
-
-        <section class="pt-64 pb-32 px-6 flex flex-col items-center text-center relative">
-            <h1 class="font-serif text-[5rem] md:text-[9rem] tracking-wide text-carbon leading-none mb-6 reveal">FE·NYA
+    <main class="pt-32">
+        <section class="py-32 px-6 flex flex-col items-center text-center">
+            <h1 class="font-serif font-normal text-7xl md:text-[8.5rem] tracking-tight text-carbon mb-4 reveal">
+                FE<span class="punto-dorado"></span>NYA
             </h1>
+            <p class="lang-es font-sans text-xs uppercase tracking-[0.4em] text-gris mb-20 reveal font-medium">Lo humano
+                del cosmos</p>
+            <p class="lang-en font-sans text-xs uppercase tracking-[0.4em] text-gris mb-20 reveal font-medium">The human
+                side of the cosmos</p>
 
-            <div class="lang-es font-sans text-xs md:text-sm uppercase tracking-[0.3em] text-gris mb-24 reveal">Lo
-                humano del cosmos</div>
-            <div class="lang-en font-sans text-xs md:text-sm uppercase tracking-[0.3em] text-gris mb-24 reveal">The
-                human side of the cosmos</div>
-
-            <p
-                class="lang-es max-w-[900px] text-[1.4rem] md:text-[1.8rem] text-gris font-serif italic leading-[1.6] mb-12 reveal font-light">
+            <p class="lang-es max-w-3xl text-2xl text-gris font-serif italic mb-12 reveal">
                 "La astrología, entendida como lenguaje simbólico, permite reconocer las Energías Esenciales y
-                comprender las dinámicas que dan forma a nuestra experiencia humana, situándonos nuevamente como parte
-                del todo al que pertenecemos."
+                comprender las dinámicas que dan forma a nuestra experiencia humana."
             </p>
-            <p
-                class="lang-en max-w-[900px] text-[1.4rem] md:text-[1.8rem] text-gris font-serif italic leading-[1.6] mb-12 reveal font-light">
+            <p class="lang-en max-w-3xl text-2xl text-gris font-serif italic mb-12 reveal">
                 "Astrology, understood as a symbolic language, allows us to recognize Essential Energies and understand
-                the dynamics that shape our human experience, placing us once again as part of the whole to which we
-                belong."
+                the dynamics that shape our human experience."
             </p>
 
-            <div class="text-3xl text-dorado tracking-[2em] pl-[2em] mb-24 reveal font-serif opacity-90">☉ ☽ ☿</div>
-
-            <a href="servicios.html" class="lang-es btn-editorial reveal">Explorar lecturas</a>
-            <a href="servicios.html" class="lang-en btn-editorial reveal">Explore readings</a>
+            <div class="text-2xl text-dorado tracking-[2em] pl-[2em] mb-16 reveal">☉ ☽ ☿</div>
+            <a href="services.html" class="lang-es btn-editorial reveal">Explorar lecturas</a>
+            <a href="services.html" class="lang-en btn-editorial reveal">Explore readings</a>
         </section>
 
-        <section class="bg-paisaje-fade pt-40 pb-64 px-6 lg:px-24">
-            <div class="max-w-4xl mx-auto text-left md:text-center reveal">
+        <section class="bg-paisaje-suave py-32 px-6 md:px-16">
+            <div class="max-w-4xl mx-auto reveal">
+                <h2 class="lang-es font-serif font-normal text-5xl md:text-6xl text-carbon mb-12">¿Qué son las Energías
+                    Esenciales?</h2>
+                <h2 class="lang-en font-serif font-normal text-5xl md:text-6xl text-carbon mb-12">What are Essential
+                    Energies?</h2>
 
-                <h2 class="lang-es font-serif text-5xl md:text-[4.5rem] text-carbon mb-16 leading-tight">¿Qué son
-                    las<br>Energías Esenciales?</h2>
-                <h2 class="lang-en font-serif text-5xl md:text-[4.5rem] text-carbon mb-16 leading-tight">What
-                    are<br>Essential Energies?</h2>
-
-                <div class="lang-es text-editorial max-w-3xl mx-auto">
+                <div class="lang-es space-y-6 text-lg text-gris leading-relaxed">
                     <p>Las Energías Esenciales son las configuraciones y vínculos que se establecen dentro de la carta
                         natal. No se entienden como rasgos aislados, sino como <strong>energías en relación</strong>.
                     </p>
@@ -287,35 +92,28 @@
                         sino encontrar el propio, el que surge de la singularidad de cada persona.</p>
                 </div>
 
-                <div class="lang-en text-editorial max-w-3xl mx-auto">
+                <div class="lang-en space-y-6 text-lg text-gris leading-relaxed">
                     <p>Essential Energies are the configurations and bonds established within the natal chart. They are
-                        not understood as isolated traits, but as <strong>relational energies in movement</strong>.</p>
-                    <p>Astrology recognizes that, besides our physical body, we are also a body of energy. Within us,
-                        different forces move and influence how we feel, think, and act.</p>
-                    <p>When we begin to recognize these energies, something starts to fall into place. We can give them
-                        their space and better understand how they relate to each other. The intention is not to reach
-                        an ideal balance, but to find our own, the one that arises from each person's singularity.</p>
+                        not understood as isolated traits, but as <strong>relational energies</strong>.</p>
+                    <p>Astrology recognizes that, besides our physical body, we are also a body of energy. Within us
+                        move different forces that influence how we feel, think and act.</p>
+                    <p>When we begin to recognize these energies, something begins to order itself. We can give them
+                        their place and better understand how they relate to each other. The intention is not to reach
+                        an ideal balance, but to find our own, the one that arises from the singularity of each person.
+                    </p>
                 </div>
             </div>
         </section>
 
-        <section id="fundadora" class="bg-cal py-48 px-6 lg:px-24 relative z-10 border-t border-line/50">
-            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+        <section id="fundadora" class="bg-cal py-32 px-6 md:px-16">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <h2 class="lang-es font-serif font-normal text-5xl md:text-6xl text-carbon mb-10">Sobre la fundadora
+                    </h2>
+                    <h2 class="lang-en font-serif font-normal text-5xl md:text-6xl text-carbon mb-10">About the founder
+                    </h2>
 
-                <div class="lg:col-span-5 reveal px-6 lg:px-0">
-                    <div class="img-offset-container">
-                        <div class="img-offset-border"></div>
-                        <img src="img/graciana.jpeg"
-                            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop'"
-                            alt="Graciana Virasoro - FE NYA">
-                    </div>
-                </div>
-
-                <div class="lg:col-span-7 reveal">
-                    <h2 class="lang-es font-serif text-5xl md:text-[4rem] text-carbon mb-12">Sobre la fundadora</h2>
-                    <h2 class="lang-en font-serif text-5xl md:text-[4rem] text-carbon mb-12">About the founder</h2>
-
-                    <div class="lang-es text-editorial">
+                    <div class="lang-es space-y-6 text-lg text-gris leading-relaxed">
                         <p>FE·NYA es un proyecto creado por Graciana Virasoro.</p>
                         <p>Desde hace más de diez años trabajo con la carta natal como herramienta de lectura simbólica
                             y comprensión relacional. Mi recorrido ha estado marcado por el estudio constante y por una
@@ -327,264 +125,165 @@
                         <p>A lo largo de la historia se nos ha repetido una misma invitación: conocernos a nosotros
                             mismos. En mi experiencia, la astrología ofrece un lenguaje particularmente valioso para
                             recorrer ese camino.</p>
-
-                        <p
-                            class="font-serif text-[1.6rem] text-dorado italic leading-relaxed py-8 border-l-2 border-dorado pl-8 my-10 bg-arena/30">
-                            "Creo que cuando logramos reconocer algo dentro de nosotros, también cambia la forma en que
-                            habitamos el mundo. Y es ahí donde comienzan los cambios más profundos."
-                        </p>
-
-                        <p>FE·NYA nació en Lanzarote, lugar donde actualmente desarrollo el proyecto y desde donde
-                            continúo investigando y acompañando procesos.</p>
                     </div>
 
-                    <div class="lang-en text-editorial">
+                    <div class="lang-en space-y-6 text-lg text-gris leading-relaxed">
                         <p>FE·NYA is a project created by Graciana Virasoro.</p>
-                        <p>For over ten years I have worked with the natal chart as a tool for symbolic reading and
+                        <p>For more than ten years I have worked with the natal chart as a tool for symbolic reading and
                             relational understanding. My journey has been marked by constant study and a sustained
                             practice of interpretation.</p>
-                        <p>Over time, I have seen how working with the natal chart opens a deep space for reflection on
-                            one's own experience. Often, what we experience as confusion or difficulty begins to gain a
-                            new perspective when we can look at it with greater distance and understanding.</p>
-                        <p>Throughout history, we have been offered the same invitation: to know ourselves. In my
-                            experience, astrology provides a particularly valuable language to walk that path.</p>
-
-                        <p
-                            class="font-serif text-[1.6rem] text-dorado italic leading-relaxed py-8 border-l-2 border-dorado pl-8 my-10 bg-arena/30">
-                            "I believe that when we manage to recognize something within ourselves, the way we inhabit
-                            the world also changes. And that is where the deepest shifts begin."
-                        </p>
-
-                        <p>FE·NYA was born in Lanzarote, where I currently develop the project and from where I continue
-                            to research and accompany personal processes.</p>
+                        <p>Over time I have been able to see how working with the natal chart opens a space of deep
+                            reflection on our own experience. Often that which we experience as confusion or difficulty
+                            begins to acquire another perspective when we can look at it with greater distance and
+                            understanding.</p>
+                        <p>Throughout history the same invitation has been repeated to us: to know ourselves. In my
+                            experience, astrology offers a particularly valuable language to walk that path.</p>
                     </div>
+                </div>
 
-                    <div class="flex gap-8 mt-12 text-3xl font-serif text-carbon/40">
-                        <span title="Saturno">♄</span>
-                        <span title="Júpiter">♃</span>
+                <div class="reveal">
+                    <div class="marco-circular">
+                        <img src="img/graciana.jpeg" alt="Graciana Virasoro">
+                    </div>
+                    <div class="text-center mt-10">
+                        <div class="text-2xl text-dorado tracking-[1em] pl-[1em] mb-6">♄ ♃</div>
+                        <p class="lang-es font-serif italic text-2xl text-carbon px-8">"Creo que cuando logramos
+                            reconocer algo dentro de nosotros, también cambia la forma en que habitamos el mundo. Y es
+                            ahí donde comienzan los cambios más profundos."</p>
+                        <p class="lang-en font-serif italic text-2xl text-carbon px-8">"I believe that when we manage to
+                            recognize something within ourselves, the way we inhabit the world also changes. And that is
+                            where the deepest changes begin."</p>
+                        <p class="lang-es text-sm text-gris mt-6 font-medium">FE·NYA nació en Lanzarote, lugar donde
+                            actualmente desarrollo el proyecto y desde donde continúo investigando y acompañando
+                            procesos.</p>
+                        <p class="lang-en text-sm text-gris mt-6 font-medium">FE·NYA was born in Lanzarote, where I
+                            currently develop the project and from where I continue researching and accompanying
+                            processes.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="lecturas" class="bg-arena py-40 px-6 lg:px-24 relative overflow-hidden border-t border-line">
-
-            <svg class="absolute -top-10 -right-20 w-[900px] h-[900px] text-dorado opacity-[0.05] pointer-events-none z-0"
-                viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="0.1" />
-                <circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" stroke-width="0.1" />
-                <circle cx="50" cy="50" r="10" fill="none" stroke="currentColor" stroke-width="0.05" />
-                <line x1="50" y1="5" x2="50" y2="95" stroke="currentColor" stroke-width="0.1" />
-                <line x1="5" y1="50" x2="95" y2="50" stroke="currentColor" stroke-width="0.1" />
-            </svg>
+        <section id="lecturas" class="bg-cal py-32 px-6 md:px-16 border-t border-line/20">
+            <div class="max-w-4xl mx-auto text-center reveal mb-16">
+                <h2 class="lang-es font-serif font-normal text-5xl md:text-6xl text-carbon mb-6">FE·NYA · Lecturas</h2>
+                <h2 class="lang-en font-serif font-normal text-5xl md:text-6xl text-carbon mb-6">FE·NYA · Readings</h2>
+                <p class="lang-es text-lg text-gris">Un lenguaje claro y accesible, pensado para acompañar procesos
+                    personales desde la comprensión.</p>
+                <p class="lang-en text-lg text-gris">A clear and accessible language, designed to accompany personal
+                    processes through understanding.</p>
+            </div>
 
             <div
-                class="absolute right-8 md:right-16 top-[30%] flex flex-col gap-32 text-4xl md:text-5xl text-carbon opacity-[0.08] font-serif z-10 pointer-events-none hidden lg:flex">
-                <span>♅</span><span>♆</span><span>♇</span>
+                class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-b border-line/30 py-16">
+
+                <div class="text-center reveal flex flex-col items-center">
+                    <h3 class="lang-es font-serif font-normal text-3xl text-carbon mb-4">Energías Esenciales</h3>
+                    <h3 class="lang-en font-serif font-normal text-3xl text-carbon mb-4">Essential Energies</h3>
+                    <p class="lang-es text-gris mb-6 flex-grow">Integración de los tres pilares de la carta natal: Sol
+                        (identidad), Luna (mundo emocional) y Ascendente (experiencia).</p>
+                    <p class="lang-en text-gris mb-6 flex-grow">Integration of the three pillars of the natal chart: Sun
+                        (identity), Moon (emotions) and Ascendant (experience).</p>
+                    <a href="services.html" class="btn-editorial w-full"><span class="lang-es">Descubre más</span><span
+                            class="lang-en">Discover more</span></a>
+                </div>
+
+                <div
+                    class="text-center reveal flex flex-col items-center border-t md:border-t-0 md:border-l md:border-r border-line/30 pt-12 md:pt-0 md:px-8">
+                    <h3 class="lang-es font-serif font-normal text-3xl text-carbon mb-4">Esenciales Completas</h3>
+                    <h3 class="lang-en font-serif font-normal text-3xl text-carbon mb-4">Full Essential</h3>
+                    <p class="lang-es text-gris mb-6 flex-grow">Desarrollo exhaustivo de la estructura natal y procesos
+                        evolutivos. Análisis del mapa completo: planetas, casas y aspectos.</p>
+                    <p class="lang-en text-gris mb-6 flex-grow">Comprehensive development of the natal structure. Full
+                        analysis: planets, houses, and aspects.</p>
+                    <a href="services.html" class="btn-editorial w-full"><span class="lang-es">Descubre más</span><span
+                            class="lang-en">Discover more</span></a>
+                </div>
+
+                <div
+                    class="text-center reveal flex flex-col items-center border-t md:border-t-0 border-line/30 pt-12 md:pt-0">
+                    <h3 class="lang-es font-serif font-normal text-3xl text-carbon mb-4">Completas + Sesión</h3>
+                    <h3 class="lang-en font-serif font-normal text-3xl text-carbon mb-4">Full + Session</h3>
+                    <p class="lang-es text-gris mb-6 flex-grow">Integración de la lectura en PDF con una sesión online
+                        de 60 minutos para profundizar e integrar el contenido.</p>
+                    <p class="lang-en text-gris mb-6 flex-grow">Integration of the PDF reading with a 60-minute online
+                        session to deepen and integrate the content.</p>
+                    <a href="services.html" class="btn-editorial w-full"><span class="lang-es">Descubre más</span><span
+                            class="lang-en">Discover more</span></a>
+                </div>
+
             </div>
 
-            <div class="max-w-6xl mx-auto relative z-20">
-                <div class="text-center mb-32 reveal">
-                    <h2 class="lang-es font-serif text-5xl md:text-[4rem] text-carbon mb-6">FE·NYA · Lecturas</h2>
-                    <h2 class="lang-en font-serif text-5xl md:text-[4rem] text-carbon mb-6">FE·NYA · Readings</h2>
-                    <p class="lang-es text-editorial mb-0 mx-auto max-w-2xl">Un lenguaje claro y accesible, pensado para
-                        acompañar procesos personales desde la comprensión.</p>
-                    <p class="lang-en text-editorial mb-0 mx-auto max-w-2xl">Clear and accessible language, designed to
-                        accompany personal processes through understanding.</p>
-                </div>
-
-                <div class="border-t border-line">
-
-                    <div
-                        class="grid grid-cols-1 lg:grid-cols-[1.5fr_2fr_auto] gap-8 lg:gap-16 py-20 border-b border-line items-center reveal">
-                        <div>
-                            <h3 class="lang-es font-serif text-4xl text-carbon leading-tight">Energías<br>Esenciales
-                            </h3>
-                            <h3 class="lang-en font-serif text-4xl text-carbon leading-tight">Essential<br>Energies</h3>
-                        </div>
-                        <div>
-                            <p class="lang-es text-editorial mb-0 pr-8">Síntesis estructurada de las dinámicas centrales
-                                de tu carta natal.</p>
-                            <p class="lang-en text-editorial mb-0 pr-8">Structured synthesis of the central dynamics of
-                                your natal chart.</p>
-                        </div>
-                        <div class="text-left lg:text-right mt-6 lg:mt-0">
-                            <a href="servicios.html" class="lang-es btn-editorial">Descubre más</a>
-                            <a href="servicios.html" class="lang-en btn-editorial">Discover more</a>
-                        </div>
-                    </div>
-
-                    <div
-                        class="grid grid-cols-1 lg:grid-cols-[1.5fr_2fr_auto] gap-8 lg:gap-16 py-20 border-b border-line items-center reveal">
-                        <div>
-                            <h3 class="lang-es font-serif text-4xl text-carbon leading-tight">Esenciales<br>Completas
-                            </h3>
-                            <h3 class="lang-en font-serif text-4xl text-carbon leading-tight">Full Essential<br>Energies
-                            </h3>
-                        </div>
-                        <div>
-                            <p class="lang-es text-editorial mb-0 pr-8">Desarrollo exhaustivo de la estructura natal y
-                                procesos evolutivos.</p>
-                            <p class="lang-en text-editorial mb-0 pr-8">Comprehensive development of the natal structure
-                                and evolutionary processes.</p>
-                        </div>
-                        <div class="text-left lg:text-right mt-6 lg:mt-0">
-                            <a href="servicios.html" class="lang-es btn-editorial">Descubre más</a>
-                            <a href="servicios.html" class="lang-en btn-editorial">Discover more</a>
-                        </div>
-                    </div>
-
-                    <div
-                        class="grid grid-cols-1 lg:grid-cols-[1.5fr_2fr_auto] gap-8 lg:gap-16 py-20 border-b border-line items-center reveal">
-                        <div>
-                            <h3 class="lang-es font-serif text-4xl text-carbon leading-tight">Completas<br>+ Sesión</h3>
-                            <h3 class="lang-en font-serif text-4xl text-carbon leading-tight">Full Reading<br>+ Session
-                            </h3>
-                        </div>
-                        <div>
-                            <p class="lang-es text-editorial mb-0 pr-8">Integración de la lectura en PDF con una sesión
-                                online de profundización.</p>
-                            <p class="lang-en text-editorial mb-0 pr-8">Integration of the PDF reading with an online
-                                deepening session.</p>
-                        </div>
-                        <div class="text-left lg:text-right mt-6 lg:mt-0">
-                            <a href="servicios.html" class="lang-es btn-editorial">Descubre más</a>
-                            <a href="servicios.html" class="lang-en btn-editorial">Discover more</a>
-                        </div>
-                    </div>
-
-                </div>
+            <div class="text-center mt-16 reveal">
+                <div class="text-2xl text-dorado tracking-[1.5em] pl-[1.5em] opacity-80">♅ ♆ ♇</div>
             </div>
         </section>
 
-        <section id="experiencias" class="bg-roca-volcanica py-48 px-6 text-center text-cal border-t border-carbon">
-            <div class="max-w-4xl mx-auto reveal">
-                <h2 class="lang-es font-serif text-5xl md:text-[4rem] mb-12">FE·NYA · Experiencias</h2>
-                <h2 class="lang-en font-serif text-5xl md:text-[4rem] mb-12">FE·NYA · Experiences</h2>
+        <section id="experiencias" class="bg-experiencias-dark py-32 px-6 text-center">
+            <div class="max-w-3xl mx-auto reveal">
+                <h2 class="lang-es font-serif font-normal text-5xl md:text-6xl mb-12 text-cal">FE·NYA · Experiencias
+                </h2>
+                <h2 class="lang-en font-serif font-normal text-5xl md:text-6xl mb-12 text-cal">FE·NYA · Experiences</h2>
 
-                <div class="w-16 h-[1px] bg-dorado mx-auto mb-16"></div>
-
-                <div class="lang-es space-y-8 text-xl text-white/80 font-light leading-relaxed mx-auto mb-20 max-w-2xl">
-                    <p>Colaboramos con espacios seleccionados en Lanzarote. Entrega prioritaria (24-48h).</p>
-                    <p>Una forma de acompañar el tiempo de viaje con una mirada personal y consciente.</p>
+                <div class="lang-es space-y-6 text-lg text-cal/80 font-light mb-12">
+                    <p>FE·NYA colabora con algunos espacios seleccionados en Lanzarote, donde esta propuesta puede
+                        acompañar el tiempo de la estancia.</p>
+                    <p>Si llegaste hasta aquí a través de la información que encontraste en el lugar donde te alojas,
+                        puedes solicitar tu lectura directamente desde esta página.</p>
+                    <p>La entrega se realiza en formato digital, con prioridad, en un plazo estimado de 24–48 horas.</p>
+                    <p class="italic text-dorado mt-8 font-serif text-2xl">Una forma de incorporar al tiempo del viaje
+                        una lectura personal que invite a detenerse un momento y mirar la propia experiencia con otra
+                        perspectiva.</p>
                 </div>
 
-                <div class="lang-en space-y-8 text-xl text-white/80 font-light leading-relaxed mx-auto mb-20 max-w-2xl">
-                    <p>We collaborate with selected spaces in Lanzarote. Priority delivery (24-48h).</p>
-                    <p>A way to accompany your travel time with a personal and conscious perspective.</p>
+                <div class="lang-en space-y-6 text-lg text-cal/80 font-light mb-12">
+                    <p>FE·NYA collaborates with selected spaces in Lanzarote, where this proposal can accompany your
+                        stay.</p>
+                    <p>If you arrived here through information found at your accommodation, you can request your reading
+                        directly from this page.</p>
+                    <p>Delivery is made in digital format, with priority, within an estimated 24–48 hours.</p>
+                    <p class="italic text-dorado mt-8 font-serif text-2xl">A way to incorporate a personal reading into
+                        your travel time that invites you to pause for a moment and look at your own experience from
+                        another perspective.</p>
                 </div>
 
-                <a href="servicios.html"
-                    class="lang-es inline-block px-12 py-5 border border-cal text-cal text-sm uppercase tracking-[0.2em] hover:bg-cal hover:text-carbon transition-colors">Solicitar
-                    lectura</a>
-                <a href="servicios.html"
-                    class="lang-en inline-block px-12 py-5 border border-cal text-cal text-sm uppercase tracking-[0.2em] hover:bg-cal hover:text-carbon transition-colors">Request
-                    reading</a>
+                <a href="services.html" class="btn-editorial btn-editorial-light"><span class="lang-es">Solicitar
+                        lectura</span><span class="lang-en">Request reading</span></a>
             </div>
         </section>
-
-        <section class="bg-cal py-32 text-center reveal">
-            <a href="https://www.instagram.com/fenyastrologia/" target="_blank"
-                class="inline-flex flex-col items-center group">
-                <svg class="w-10 h-10 mb-8 fill-carbon group-hover:fill-dorado transition-colors" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                </svg>
-                <h3 class="lang-es font-serif text-3xl md:text-4xl text-carbon mb-3 font-light">Conecta con nosotras
-                </h3>
-                <h3 class="lang-en font-serif text-3xl md:text-4xl text-carbon mb-3 font-light">Connect with us</h3>
-                <p class="text-gris font-light tracking-[0.1em] text-sm uppercase mt-2">@fenyastrologia</p>
-            </a>
-        </section>
-
     </main>
 
-    <footer class="bg-la-geria py-48 px-6 md:px-16 text-center text-cal border-t border-carbon">
+    <footer class="bg-header-roca py-40 px-6 text-center text-white border-t border-carbon">
         <div class="max-w-4xl mx-auto reveal">
-
-            <div
-                class="flex items-center justify-center gap-1 font-serif text-6xl md:text-7xl tracking-widest font-medium mb-8">
-                FE<span class="w-3 h-3 bg-dorado rounded-full mx-1"></span>NYA
+            <div class="font-serif font-normal text-6xl md:text-8xl tracking-widest mb-6">
+                FE<span class="punto-dorado"></span>NYA
             </div>
+            <p class="lang-es text-[0.65rem] font-medium uppercase tracking-[0.4em] text-dorado mb-16">Lo humano del
+                cosmos</p>
+            <p class="lang-en text-[0.65rem] font-medium uppercase tracking-[0.4em] text-dorado mb-16">The human side of
+                the cosmos</p>
 
-            <p class="lang-es text-sm uppercase tracking-[0.4em] text-dorado mb-24">Lo humano del cosmos</p>
-            <p class="lang-en text-sm uppercase tracking-[0.4em] text-dorado mb-24">The human side of the cosmos</p>
-
-            <div class="space-y-6 mb-32 font-sans font-light">
+            <div class="space-y-4 mb-20 text-lg font-light tracking-wide">
                 <p><a href="mailto:fenyaastrology@gmail.com"
-                        class="text-xl hover:text-dorado transition-colors">fenyaastrology@gmail.com</a></p>
+                        class="hover:text-dorado transition-colors">fenyaastrology@gmail.com</a></p>
                 <p><a href="https://instagram.com/fenyastrologia" target="_blank"
-                        class="text-xl hover:text-dorado transition-colors">@fenyastrologia</a></p>
+                        class="hover:text-dorado transition-colors">@fenyastrologia</a></p>
             </div>
 
-            <div class="space-y-3 text-xs uppercase tracking-[0.25em] text-white/50 font-sans">
-                <p class="lang-es">Proyecto creado por Graciana Virasoro</p>
-                <p class="lang-en">Project created by Graciana Virasoro</p>
-                <p><span class="text-dorado">©</span> FE·NYA</p>
+            <div class="space-y-4 text-xs font-medium uppercase tracking-[0.2em] text-white/50">
+                <p>
+                    <span class="lang-es">© FE·NYA | Proyecto creado por Graciana Virasoro</span>
+                    <span class="lang-en">© FE·NYA | Project created by Graciana Virasoro</span>
+                </p>
+                <p>
+                    <a href="https://www.doyo.pro" target="_blank"
+                        class="hover:text-dorado transition-colors">Desarrollado por Doyo.Pro</a>
+                </p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // SCRIPT 1: Sistema Bilingüe que altera el atributo data-lang del HTML
-        // Al usar 'localstorage', el idioma se mantiene al navegar entre Home y Servicios.
-        function setLang(lang) {
-            document.documentElement.setAttribute('data-lang', lang);
-            localStorage.setItem('fenya-lang', lang);
-
-            // Cambiar estilos de los botones en el Header
-            const btnEs = document.getElementById('btn-es');
-            const btnEn = document.getElementById('btn-en');
-
-            if (lang === 'es') {
-                btnEs.classList.add('text-cal', 'border-b', 'border-dorado');
-                btnEs.classList.remove('text-white/40');
-                btnEn.classList.remove('text-cal', 'border-b', 'border-dorado');
-                btnEn.classList.add('text-white/40');
-            } else {
-                btnEn.classList.add('text-cal', 'border-b', 'border-dorado');
-                btnEn.classList.remove('text-white/40');
-                btnEs.classList.remove('text-cal', 'border-b', 'border-dorado');
-                btnEs.classList.add('text-white/40');
-            }
-        }
-
-        // SCRIPT 2: Animación suave de aparición al scrollear
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                // El elemento aparece cuando cruza el umbral
-                if (elementTop < windowHeight - 80) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-
-        // SCRIPT 3: Inicialización al cargar la página
-        window.addEventListener('DOMContentLoaded', () => {
-            // Recuperar idioma guardado
-            const savedLang = localStorage.getItem('fenya-lang') || 'es';
-            setLang(savedLang);
-
-            // Activar revelaciones que estén en pantalla
-            setTimeout(reveal, 100);
-        });
-
-        // SCRIPT 4: Scroll suave para los enlaces del menú
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
+    <script src="main.js"></script>
 </body>
 
 </html>

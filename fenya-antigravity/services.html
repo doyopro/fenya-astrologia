@@ -9,704 +9,300 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
         rel="stylesheet">
 
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        cal: "#FBFBF9",
-                        arena: "#F4F1EB",
-                        carbon: "#181818",
-                        gris: "#5C5C5C",
-                        dorado: "#9B8258",
-                        verdeclara: "#F4F1EB",
-                        verdetext: "#5C5C5C",
-                        line: "rgba(0, 0, 0, 0.12)"
-                    },
-                    fontFamily: {
-                        serif: ['Cormorant Garamond', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    }
+                    colors: { cal: "#FBFBF9", arena: "#F4F1EB", carbon: "#181818", gris: "#5C5C5C", dorado: "#9B8258" },
+                    fontFamily: { serif: ['Playfair Display', 'serif'], sans: ['Montserrat', 'sans-serif'] }
                 }
             }
         }
     </script>
-
-    <style>
-        /* ==========================================================================
-           SISTEMA BILINGÜE NATIVO
-           ========================================================================== */
-        .lang-en {
-            display: none !important;
-        }
-
-        html[data-lang="en"] .lang-en {
-            display: block !important;
-        }
-
-        html[data-lang="en"] span.lang-en,
-        html[data-lang="en"] a.lang-en {
-            display: inline-block !important;
-        }
-
-        html[data-lang="en"] .lang-es {
-            display: none !important;
-        }
-
-        /* ==========================================================================
-           FONDOS DE LANZAROTE (Locales + Fallback seguro)
-           ========================================================================== */
-        .bg-roca-volcanica {
-            background-color: #181818;
-            background-image: linear-gradient(rgba(24, 24, 24, 0.85), rgba(24, 24, 24, 0.9)),
-                url('img/piedra.png'),
-                url('https://images.unsplash.com/photo-1614088916327-0243e8ea2a08?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .bg-la-geria {
-            background-color: #181818;
-            background-image: linear-gradient(rgba(24, 24, 24, 0.6), rgba(24, 24, 24, 0.85)),
-                url('img/geria.jpeg'),
-                url('https://images.unsplash.com/photo-1584313506240-5a1147a46fa3?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* ==========================================================================
-           UX/UI COMPONENTES
-           ========================================================================== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .text-editorial {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.15rem;
-            color: #5C5C5C;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-        }
-
-        .prose-highlight {
-            border-left: 2px solid #9B8258;
-            padding-left: 24px;
-            margin: 32px 0;
-            font-style: italic;
-            color: #2C2C2A;
-            line-height: 1.9;
-            font-size: 1.15rem;
-        }
-
-        .astro-symbol {
-            font-family: serif;
-            font-size: 1.5rem;
-            color: #9B8258;
-            display: inline-block;
-            margin: 0 8px;
-        }
-
-        /* Formulario Elegante */
-        .form-group {
-            position: relative;
-            margin-bottom: 2.5rem;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 0;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-            color: #181818;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-bottom-color: #9B8258;
-            border-bottom-width: 2px;
-            padding-bottom: 10px;
-        }
-
-        .form-control::placeholder {
-            color: transparent;
-        }
-
-        .form-label {
-            position: absolute;
-            top: 12px;
-            left: 0;
-            font-size: 1rem;
-            color: #5C5C5C;
-            pointer-events: none;
-            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .form-control:focus~.form-label,
-        .form-control:not(:placeholder-shown)~.form-label {
-            top: -1.5rem;
-            font-size: 0.75rem;
-            color: #181818;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-
-        .form-box {
-            background: #FBFBF9;
-            padding: 48px;
-            border: 1px solid rgba(0, 0, 0, 0.12);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 16px 0;
-            background: #181818;
-            color: #FBFBF9;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            border: 1px solid #181818;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            margin-top: 24px;
-            font-weight: 500;
-        }
-
-        .btn-submit:hover {
-            background: transparent;
-            color: #181818;
-        }
-
-        .loading-msg {
-            display: none;
-            text-align: center;
-            color: #9B8258;
-            font-style: italic;
-            margin-top: 16px;
-            font-size: 0.95rem;
-        }
-
-        .price-tag {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            color: #9B8258;
-            font-weight: 300;
-            line-height: 1;
-        }
-
-        @media (max-width: 768px) {
-            .form-box {
-                padding: 24px;
-            }
-        }
-    </style>
 </head>
 
-<body class="bg-cal text-carbon font-sans font-light antialiased">
+<body class="font-sans font-light text-carbon bg-cal">
 
     <header
-        class="fixed top-0 w-full flex justify-between items-center px-6 md:px-16 py-4 bg-roca-volcanica backdrop-blur-sm z-50 border-b border-white/10">
+        class="fixed top-0 w-full flex justify-between items-center px-8 py-5 bg-header-roca z-50 text-white shadow-sm">
         <a href="index.html"
-            class="flex items-center gap-1.5 font-serif text-[1.6rem] tracking-widest font-medium text-cal hover:opacity-80 transition-opacity">
-            FE<span class="w-1.5 h-1.5 bg-dorado rounded-full"></span>NYA
+            class="font-serif text-2xl tracking-widest uppercase hover:text-dorado transition-colors font-normal">
+            FE<span class="punto-dorado"></span>NYA
         </a>
-        <nav class="hidden md:flex items-center gap-12">
-            <a href="index.html"
-                class="text-cal/70 hover:text-cal text-xs font-light transition-colors duration-300 tracking-[0.2em] uppercase">
-                <span class="lang-es">Volver al inicio</span>
-                <span class="lang-en">Back to home</span>
-            </a>
+        <nav class="hidden md:flex gap-10 text-[0.7rem] uppercase tracking-[0.2em] font-medium">
+            <a href="index.html" class="hover:text-dorado transition-colors"><span class="lang-es">Volver al
+                    inicio</span><span class="lang-en">Back to home</span></a>
         </nav>
-        <div class="flex items-center gap-4 text-xs tracking-widest text-white/50">
-            <button onclick="setLang('es')" id="btn-es"
-                class="text-cal border-b border-dorado pb-0.5 hover:text-white transition-colors">ES</button>
+        <div class="flex gap-4 text-xs tracking-widest text-white/50 font-medium">
+            <button onclick="setLang('es')" id="btn-es" class="hover:text-white transition-colors">ES</button>
             <span class="opacity-30">|</span>
-            <button onclick="setLang('en')" id="btn-en" class="pb-0.5 hover:text-white transition-colors">EN</button>
+            <button onclick="setLang('en')" id="btn-en" class="hover:text-white transition-colors">EN</button>
         </div>
     </header>
 
-    <div class="h-32 md:h-40"></div>
-
-    <section class="px-6 md:px-16 lg:px-24 py-20 border-b border-line text-center">
-        <div class="max-w-4xl mx-auto reveal">
-            <h1 class="font-serif text-6xl md:text-[5.5rem] text-carbon mb-8 font-light">
+    <main class="pt-40">
+        <section class="px-6 py-20 text-center reveal">
+            <h1 class="font-serif font-normal text-6xl md:text-7xl text-carbon mb-8">
                 <span class="lang-es">Lecturas y Servicios</span>
                 <span class="lang-en">Readings & Services</span>
             </h1>
-
-            <div class="lang-es text-editorial mx-auto max-w-2xl">
-                Cada lectura es un viaje personalizado. No necesitas conocimientos previos. Un lenguaje claro pensado
-                para acompañar tus procesos.
-            </div>
-            <div class="lang-en text-editorial mx-auto max-w-2xl">
-                Each reading is a personalized journey. No prior knowledge needed. Clear language designed to accompany
-                your processes.
-            </div>
+            <p class="lang-es max-w-2xl mx-auto text-lg text-gris">Un lenguaje claro pensado para acompañar tus
+                procesos.</p>
+            <p class="lang-en max-w-2xl mx-auto text-lg text-gris">Clear language designed to accompany your processes.
+            </p>
 
             <div class="flex justify-center gap-4 mt-12 text-dorado/80">
-                <span class="astro-symbol" title="Sol">☉</span>
-                <span class="astro-symbol" title="Luna">☽</span>
-                <span class="astro-symbol" title="Mercurio">☿</span>
+                <span class="text-2xl tracking-[1em] pl-[1em]">☉ ☽ ☿</span>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <main>
-        <section class="px-6 md:px-16 lg:px-24 py-32 bg-cal">
-            <div class="max-w-6xl mx-auto">
+        <section class="px-6 md:px-16 lg:px-24 py-16 bg-cal">
+            <div class="max-w-5xl mx-auto divide-y divide-line/30 border-t border-b border-line/30">
 
-                <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 mb-20 pb-20 border-b border-line reveal">
+                <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-12 py-16 reveal">
                     <div>
-                        <h2 class="font-serif text-4xl md:text-[3rem] text-carbon mb-6 font-light">
-                            <span class="lang-es">Energías Esenciales</span>
-                            <span class="lang-en">Essential Energies</span>
-                        </h2>
+                        <h2 class="lang-es font-serif font-normal text-4xl md:text-5xl text-carbon mb-6">Energías
+                            Esenciales</h2>
+                        <h2 class="lang-en font-serif font-normal text-4xl md:text-5xl text-carbon mb-6">Essential
+                            Energies</h2>
 
-                        <div class="lang-es text-editorial mb-8">
+                        <div class="lang-es text-lg text-gris leading-relaxed mb-8">
                             Lectura personalizada que integra los tres pilares fundamentales de la carta natal. La
                             lectura los aborda de manera conjunta, dando espacio a cada energía y permitiendo comprender
-                            cómo se relacionan y se expresan en la vida cotidiana. Sol, como expresión de identidad;
-                            Luna, como mundo emocional; Ascendente, como forma de habitar y presentarse en la
-                            experiencia.
+                            cómo se relacionan y se expresan en la vida cotidiana.
                         </div>
-                        <div class="lang-en text-editorial mb-8">
+                        <div class="lang-en text-lg text-gris leading-relaxed mb-8">
                             Personalized reading integrating the three fundamental pillars of the natal chart. The
                             reading approaches them in an integrated way, exploring each energy while understanding how
-                            they interact in daily life. Sun, expression of identity; Moon, emotional world; Ascendant,
-                            way of inhabiting experience.
+                            they interact in daily life.
                         </div>
 
-                        <p class="text-sm text-gris uppercase tracking-widest font-medium">
-                            <span class="lang-es">PDF · 5-8 páginas</span>
-                            <span class="lang-en">PDF · 5-8 pages</span>
-                        </p>
+                        <ul class="space-y-3 mb-8 text-gris font-medium">
+                            <li><span class="text-dorado font-serif text-xl mr-2">☉</span> <span class="lang-es">Sol:
+                                    expresión de identidad</span><span class="lang-en">Sun: expression of
+                                    identity</span></li>
+                            <li><span class="text-dorado font-serif text-xl mr-2">☽</span> <span class="lang-es">Luna:
+                                    mundo emocional</span><span class="lang-en">Moon: emotional world</span></li>
+                            <li><span class="text-dorado font-serif text-xl mr-2">♀</span> <span
+                                    class="lang-es">Ascendente: forma de habitar la experiencia</span><span
+                                    class="lang-en">Ascendant: way of inhabiting experience</span></li>
+                        </ul>
+                        <p class="text-xs uppercase tracking-widest text-gris/60 font-bold">PDF · 5-8 páginas</p>
                     </div>
-
-                    <div class="flex flex-col justify-start lg:items-end lg:text-right pt-2">
-                        <div class="price-tag">35€</div>
-                        <p class="text-xs text-gris uppercase tracking-widest mt-6">
-                            <span class="lang-es">Entrega digital<br />2-3 días</span>
-                            <span class="lang-en">Digital delivery<br />2-3 days</span>
+                    <div class="flex flex-col md:items-end md:text-right">
+                        <div class="font-serif text-5xl text-dorado mb-4">35€</div>
+                        <p class="text-xs uppercase tracking-widest text-gris font-medium leading-relaxed">
+                            <span class="lang-es">Entrega digital<br>2-3 días</span>
+                            <span class="lang-en">Digital delivery<br>2-3 days</span>
                         </p>
-                        <a href="#formulario"
-                            class="lang-es mt-8 text-sm uppercase tracking-widest border-b border-dorado text-dorado pb-1 hover:text-carbon hover:border-carbon transition-colors">Solicitar</a>
-                        <a href="#formulario"
-                            class="lang-en mt-8 text-sm uppercase tracking-widest border-b border-dorado text-dorado pb-1 hover:text-carbon hover:border-carbon transition-colors">Request</a>
+                        <a href="#solicitud"
+                            class="mt-10 text-xs uppercase tracking-[0.2em] font-bold border-b border-dorado pb-1 hover:text-dorado transition-colors">
+                            <span class="lang-es">Solicitar</span><span class="lang-en">Request</span>
+                        </a>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 mb-20 pb-20 border-b border-line reveal">
+                <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-12 py-16 reveal">
                     <div>
-                        <h2 class="font-serif text-4xl md:text-[3rem] text-carbon mb-6 font-light">
-                            <span class="lang-es">Energías Esenciales Completas</span>
-                            <span class="lang-en">Full Essential Energies</span>
-                        </h2>
-
-                        <div class="lang-es text-editorial">
+                        <h2 class="lang-es font-serif font-normal text-4xl md:text-5xl text-carbon mb-6">Energías
+                            Esenciales Completas</h2>
+                        <h2 class="lang-en font-serif font-normal text-4xl md:text-5xl text-carbon mb-6">Full Essential
+                            Energies</h2>
+                        <div class="lang-es text-lg text-gris leading-relaxed mb-8">
                             Lectura integral de la carta natal. Recorre el conjunto del mapa —planetas, casas y
                             aspectos— para comprender cómo se enlazan las distintas energías y cómo se expresan en la
                             identidad, los vínculos y los procesos que se atraviesan.
                         </div>
-                        <div class="lang-en text-editorial">
+                        <div class="lang-en text-lg text-gris leading-relaxed mb-8">
                             A comprehensive natal chart reading that navigates the entire map—planets, houses, and
                             aspects—to understand how different energies are linked and expressed in identity,
                             relationships, and lived processes.
                         </div>
-
-                        <div class="lang-es prose-highlight">
-                            Puede elaborarse teniendo en cuenta un momento, decisión o situación particular que se esté
-                            viviendo.
-                        </div>
-                        <div class="lang-en prose-highlight">
-                            It can be prepared considering a specific moment, decision, or situation being experienced.
-                        </div>
-
-                        <p class="text-sm text-gris uppercase tracking-widest font-medium">
-                            <span class="lang-es">PDF · 20-25 páginas</span>
-                            <span class="lang-en">PDF · 20-25 pages</span>
+                        <p class="italic text-dorado font-serif text-xl mb-8 leading-relaxed">
+                            <span class="lang-es">Puede elaborarse teniendo en cuenta un momento, decisión o situación
+                                particular que se esté viviendo.</span>
+                            <span class="lang-en">It can be prepared considering a specific moment, decision, or
+                                situation being experienced.</span>
                         </p>
+                        <p class="text-xs uppercase tracking-widest text-gris/60 font-bold">PDF · 20-25 páginas</p>
                     </div>
-
-                    <div class="flex flex-col justify-start lg:items-end lg:text-right pt-2">
-                        <div class="price-tag">75€</div>
-                        <p class="text-xs text-gris uppercase tracking-widest mt-6">
-                            <span class="lang-es">Entrega digital<br />4-5 días</span>
-                            <span class="lang-en">Digital delivery<br />4-5 days</span>
+                    <div class="flex flex-col md:items-end md:text-right">
+                        <div class="font-serif text-5xl text-dorado mb-4">75€</div>
+                        <p class="text-xs uppercase tracking-widest text-gris font-medium leading-relaxed">
+                            <span class="lang-es">Entrega digital<br>4-5 días</span>
+                            <span class="lang-en">Digital delivery<br>4-5 days</span>
                         </p>
-                        <a href="#formulario"
-                            class="lang-es mt-8 text-sm uppercase tracking-widest border-b border-dorado text-dorado pb-1 hover:text-carbon hover:border-carbon transition-colors">Solicitar</a>
-                        <a href="#formulario"
-                            class="lang-en mt-8 text-sm uppercase tracking-widest border-b border-dorado text-dorado pb-1 hover:text-carbon hover:border-carbon transition-colors">Request</a>
+                        <a href="#solicitud"
+                            class="mt-10 text-xs uppercase tracking-[0.2em] font-bold border-b border-dorado pb-1 hover:text-dorado transition-colors">
+                            <span class="lang-es">Solicitar</span><span class="lang-en">Request</span>
+                        </a>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 mb-20 pb-20 border-b border-line reveal">
+                <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-12 py-16 reveal">
                     <div>
-                        <h2 class="font-serif text-4xl md:text-[3rem] text-carbon mb-6 font-light">
-                            <span class="lang-es">Completas + Sesión Online</span>
-                            <span class="lang-en">Full Reading + Online Session</span>
-                        </h2>
-
-                        <div class="lang-es text-editorial">
-                            Incluye la lectura integral y una sesión online individual de profundización (60 minutos).
-                            Su objetivo es ampliar e integrar el contenido del mapa personal desde una mirada más
-                            directa y personalizada.
-                        </div>
-                        <div class="lang-en text-editorial">
-                            Includes a comprehensive reading and an individual online deepening session (60 minutes).
-                            Its objective is to expand and integrate the personal chart content through a more direct
-                            and personalized lens.
-                        </div>
-
-                        <div class="lang-es Prose prose-highlight">
-                            Dudas o puntos que requieran mayor claridad Procesos personales a la luz de la estructura
+                        <h2 class="lang-es font-serif font-normal text-4xl md:text-5xl text-carbon mb-6">Completas +
+                            Sesión Online</h2>
+                        <h2 class="lang-en font-serif font-normal text-4xl md:text-5xl text-carbon mb-6">Full Reading +
+                            Session</h2>
+                        <div class="lang-es text-lg text-gris leading-relaxed mb-8">
+                            Incluye la lectura integral en PDF y una sesión online individual de profundización (60
+                            minutos). Su objetivo es ampliar e integrar el contenido del mapa personal desde una mirada
+                            más directa y personalizada, aclarando dudas o procesos personales a la luz de la estructura
                             natal.
                         </div>
-                        <div class="lang-en Prose prose-highlight">
-                            Questions requiring clarity. Personal processes under the natal structure.
+                        <div class="lang-en text-lg text-gris leading-relaxed mb-8">
+                            Includes a comprehensive reading in PDF and an individual online deepening session (60
+                            minutes). Its objective is to expand and integrate the personal chart content through a more
+                            direct and personalized lens.
                         </div>
-
-                        <p class="lang-es text-sm text-dorado italic">*La sesión está disponible únicamente en español
+                        <p class="lang-es text-sm text-dorado italic font-medium mb-8">*La sesión está disponible
+                            únicamente en español</p>
+                        <p class="lang-en text-sm text-dorado italic font-medium mb-8">*Online session is only available
+                            in Spanish</p>
+                        <p class="text-xs uppercase tracking-widest text-gris/60 font-bold">PDF + SESIÓN 60 MIN</p>
+                    </div>
+                    <div class="flex flex-col md:items-end md:text-right">
+                        <div class="font-serif text-5xl text-dorado mb-4">130€</div>
+                        <p class="text-xs uppercase tracking-widest text-gris font-medium leading-relaxed">
+                            <span class="lang-es">Entrega digital +<br>Sesión agendada</span>
+                            <span class="lang-en">Digital delivery +<br>Scheduled session</span>
                         </p>
-                        <p class="lang-en text-sm text-dorado italic">*Session available only in Spanish</p>
+                        <a href="#solicitud"
+                            class="mt-10 text-xs uppercase tracking-[0.2em] font-bold border-b border-dorado pb-1 hover:text-dorado transition-colors">
+                            <span class="lang-es">Solicitar</span><span class="lang-en">Request</span>
+                        </a>
                     </div>
-
-                    <div class="flex flex-col justify-start lg:items-end lg:text-right pt-2">
-                        <div class="price-tag">130€</div>
-                        <p class="text-xs text-gris uppercase tracking-widest mt-6">
-                            <span class="lang-es">PDF Completo +<br />Sesión 60 min</span>
-                            <span class="lang-en">Full PDF +<br />60 min Session</span>
-                        </p>
-                        <a href="#formulario"
-                            class="lang-es mt-8 text-sm uppercase tracking-widest border-b border-dorado text-dorado pb-1 hover:text-carbon hover:border-carbon transition-colors">Solicitar</a>
-                        <a href="#formulario"
-                            class="lang-en mt-8 text-sm uppercase tracking-widest border-b border-dorado text-dorado pb-1 hover:text-carbon hover:border-carbon transition-colors">Request</a>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 reveal">
-                    <div>
-                        <h2 class="font-serif text-4xl md:text-[3rem] text-carbon mb-6 font-light">
-                            <span class="lang-es">FE·NYA Experiencias</span>
-                            <span class="lang-en">FE·NYA Experiences</span>
-                        </h2>
-
-                        <div class="lang-es text-editorial">
-                            Lecturas con entrega prioritaria (24-48h) en hoteles y espacios colaboradores en Lanzarote.
-                            Una forma de incorporar al tiempo del viaje una lectura personal que invite a detenerse un
-                            momento y mirar la propia experiencia con otra perspectiva.
-                        </div>
-                        <div class="lang-en text-editorial">
-                            Lectures with priority delivery (24-48h) at participating hotels and spaces in Lanzarote. A
-                            personal reading to incorporate into your travel time, inviting you to pause and view your
-                            experience differently.
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col justify-start lg:items-end lg:text-right pt-2">
-                        <div class="price-tag">
-                            <span class="lang-es">Hotel</span>
-                            <span class="lang-en">Hotel</span>
-                        </div>
-                        <p class="text-xs text-gris uppercase tracking-widest mt-6">
-                            <span class="lang-es">Prioridad<br />24-48 horas</span>
-                            <span class="lang-en">Priority<br />24-48 hours</span>
-                        </p>
-                        <a href="#formulario"
-                            class="lang-es mt-8 text-sm uppercase tracking-widest border-b border-dorado text-dorado pb-1 hover:text-carbon hover:border-carbon transition-colors">Solicitar</a>
-                        <a href="#formulario"
-                            class="lang-en mt-8 text-sm uppercase tracking-widest border-b border-dorado text-dorado pb-1 hover:text-carbon hover:border-carbon transition-colors">Request</a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="formulario" class="bg-arena py-40 px-6 md:px-16 lg:px-24 border-t border-line">
-            <div class="max-w-6xl mx-auto">
-
-                <h2 class="font-serif text-5xl md:text-6xl text-carbon mb-24 text-center font-light reveal">
-                    <span class="lang-es">Cómo solicitar tu lectura</span>
-                    <span class="lang-en">How to request a reading</span>
-                </h2>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 reveal">
-
-                    <div class="flex flex-col justify-start pt-8">
-
-                        <div class="lang-es text-editorial space-y-8">
-                            <p><strong>1. Solicitud:</strong> Completa el formulario con tus datos exactos de
-                                nacimiento.</p>
-                            <p><strong>2. Pago seguro:</strong> Al continuar, serás redirigido a la plataforma segura de
-                                Stripe para finalizar la reserva.</p>
-                            <p><strong>3. Elaboración:</strong> Tras confirmar el pago, la lectura se elabora de manera
-                                individual y se envía en PDF en un plazo de hasta 5 días.</p>
-                        </div>
-
-                        <div class="lang-en text-editorial space-y-8">
-                            <p><strong>1. Request:</strong> Complete the form with your exact birth details.</p>
-                            <p><strong>2. Secure Payment:</strong> Proceed to finalise the booking on Stripe's secure
-                                platform.</p>
-                            <p><strong>3. Preparation:</strong> After payment, your individual reading is prepared and
-                                sent as a PDF within 5 days.</p>
-                        </div>
-
-                        <div class="mt-12 p-8 border border-dorado/30 bg-cal">
-                            <p class="lang-es text-sm text-dorado italic m-0 leading-relaxed">
-                                *Para FE·NYA Experiencias (Hoteles), la entrega se realiza con prioridad en 24-48 horas.
-                            </p>
-                            <p class="lang-en text-sm text-dorado italic m-0 leading-relaxed">
-                                *Priority delivery (24-48h) applies only to FE·NYA Experiences (Hotels).
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="form-box">
-                        <form id="reserva-form" name="fenya-checkout" method="POST" data-netlify="true">
-
-                            <div class="form-group">
-                                <select class="form-control" id="lectura" name="lectura" required
-                                    style="cursor: pointer; padding-top: 1.5rem; background:transparent;">
-                                    <option value="" disabled selected></option>
-                                    <option class="lang-es" value="https://buy.stripe.com/aFa6oJgFw40maeocCmaMU0f">
-                                        Energías Esenciales (35€)</option>
-                                    <option class="lang-en" value="https://buy.stripe.com/aFa6oJgFw40maeocCmaMU0f">
-                                        Essential Energies (35€)</option>
-
-                                    <option class="lang-es" value="https://buy.stripe.com/8x2aEZ0Gy40m2LWaueaMU0g">
-                                        Energías Esenciales Completas (75€)</option>
-                                    <option class="lang-en" value="https://buy.stripe.com/8x2aEZ0Gy40m2LWaueaMU0g">Full
-                                        Essential Energies (75€)</option>
-
-                                    <option class="lang-es" value="https://buy.stripe.com/cNi6oJfBs2Wi3Q00TEaMU0h">
-                                        Completas + Sesión Online (130€)</option>
-                                    <option class="lang-en" value="https://buy.stripe.com/cNi6oJfBs2Wi3Q00TEaMU0h">Full
-                                        Reading + Online Session (130€)</option>
-
-                                    <option class="lang-es" value="experiencia-hotel">FE·NYA Experiencias (Hoteles
-                                        24-48h)</option>
-                                    <option class="lang-en" value="experiencia-hotel">FE·NYA Experiences (Hotels 24-48h)
-                                    </option>
-                                </select>
-                                <label for="lectura" class="form-label">
-                                    <span class="lang-es">Tipo de lectura</span>
-                                    <span class="lang-en">Reading type</span>
-                                </label>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder=" "
-                                    required>
-                                <label for="nombre" class="form-label">
-                                    <span class="lang-es">Nombre completo</span>
-                                    <span class="lang-en">Full name</span>
-                                </label>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="email" class="form-control" id="email" name="email" placeholder=" "
-                                    required>
-                                <label for="email" class="form-label">
-                                    <span class="lang-es">Correo electrónico</span>
-                                    <span class="lang-en">Email address</span>
-                                </label>
-                            </div>
-
-                            <div class="grid grid-cols-2 gap-8">
-                                <div class="form-group">
-                                    <input type="date" class="form-control" id="fecha" name="fecha" placeholder=" "
-                                        required>
-                                    <label for="fecha" class="form-label">
-                                        <span class="lang-es">Fecha nacimiento</span>
-                                        <span class="lang-en">Date of birth</span>
-                                    </label>
-                                </div>
-                                <div class="form-group">
-                                    <input type="time" class="form-control" id="hora" name="hora" placeholder=" "
-                                        required>
-                                    <label for="hora" class="form-label">
-                                        <span class="lang-es">Hora exacta</span>
-                                        <span class="lang-en">Exact time</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="lugar" name="lugar" placeholder=" "
-                                    required>
-                                <label for="lugar" class="form-label">
-                                    <span class="lang-es">Ciudad y país de nacimiento</span>
-                                    <span class="lang-en">City and country of birth</span>
-                                </label>
-                            </div>
-
-                            <div class="form-group">
-                                <textarea class="form-control" id="contexto" name="contexto" placeholder=" "
-                                    style="min-height: 100px; resize: vertical; padding-top: 1rem;"></textarea>
-                                <label for="contexto" class="form-label">
-                                    <span class="lang-es">Contexto personal o dudas (Opcional)</span>
-                                    <span class="lang-en">Personal context (Optional)</span>
-                                </label>
-                            </div>
-
-                            <button type="submit" class="btn-submit">
-                                <span class="lang-es">Ir al pago seguro</span>
-                                <span class="lang-en">Proceed to checkout</span>
-                            </button>
-
-                            <p class="loading-msg">
-                                <span class="lang-es">Procesando solicitud, redirigiendo a Stripe...</span>
-                                <span class="lang-en">Processing request, redirecting to Stripe...</span>
-                            </p>
-                        </form>
-                    </div>
-
                 </div>
             </div>
         </section>
 
+        <section id="solicitud" class="bg-arena py-32 px-6 md:px-16 border-t border-line/20">
+            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 reveal">
+                <div>
+                    <h2 class="lang-es font-serif font-normal text-4xl text-carbon mb-8">Solicitar lectura</h2>
+                    <h2 class="lang-en font-serif font-normal text-4xl text-carbon mb-8">Request reading</h2>
+                    <div class="lang-es space-y-6 text-gris leading-relaxed">
+                        <p><strong>1. Solicitud:</strong> Completa el formulario con tus datos exactos de nacimiento
+                            (fecha, lugar y hora exacta).</p>
+                        <p><strong>2. Pago seguro:</strong> Al continuar, serás redirigido a la plataforma segura de
+                            Stripe para finalizar la reserva.</p>
+                        <p><strong>3. Elaboración:</strong> Tras confirmar el pago, la lectura se elabora de manera
+                            individual y se envía en PDF en los plazos indicados.</p>
+                    </div>
+                    <div class="lang-en space-y-6 text-gris leading-relaxed">
+                        <p><strong>1. Request:</strong> Complete the form with your exact birth details (date, place,
+                            and exact time).</p>
+                        <p><strong>2. Secure Payment:</strong> Proceed to finalize the booking on Stripe's secure
+                            platform.</p>
+                        <p><strong>3. Preparation:</strong> Once payment is confirmed, the reading is individually
+                            crafted and sent via PDF within the indicated timeframes.</p>
+                    </div>
+                </div>
+
+                <div class="bg-cal p-8 border border-line/50 shadow-sm">
+                    <form id="checkout-form" class="space-y-6">
+                        <div>
+                            <label class="block text-[0.65rem] uppercase tracking-widest text-gris mb-2 font-bold"><span
+                                    class="lang-es">Lectura a solicitar</span><span class="lang-en">Reading
+                                    type</span></label>
+                            <select id="tipo-lectura" required
+                                class="w-full bg-transparent border-b border-carbon py-2 focus:outline-none focus:border-dorado transition-colors font-medium">
+                                <option value="https://buy.stripe.com/aFa6oJgFw40maeocCmaMU0f" class="lang-es">Energías
+                                    Esenciales (35€)</option>
+                                <option value="https://buy.stripe.com/aFa6oJgFw40maeocCmaMU0f" class="lang-en">Essential
+                                    Energies (35€)</option>
+                                <option value="https://buy.stripe.com/8x2aEZ0Gy40m2LWaueaMU0g" class="lang-es">
+                                    Esenciales Completas (75€)</option>
+                                <option value="https://buy.stripe.com/8x2aEZ0Gy40m2LWaueaMU0g" class="lang-en">Full
+                                    Essential Energies (75€)</option>
+                                <option value="https://buy.stripe.com/cNi6oJfBs2Wi3Q00TEaMU0h" class="lang-es">Completas
+                                    + Sesión (130€)</option>
+                                <option value="https://buy.stripe.com/cNi6oJfBs2Wi3Q00TEaMU0h" class="lang-en">Full
+                                    Reading + Session (130€)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Nombre completo / Full name" required
+                                class="w-full bg-transparent border-b border-carbon py-2 focus:outline-none focus:border-dorado placeholder-gris/50 font-medium">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Email" required
+                                class="w-full bg-transparent border-b border-carbon py-2 focus:outline-none focus:border-dorado placeholder-gris/50 font-medium">
+                        </div>
+                        <div class="grid grid-cols-2 gap-8">
+                            <div>
+                                <label
+                                    class="block text-[0.6rem] uppercase tracking-widest text-gris/50 mb-1 font-bold">Fecha
+                                    / Date</label>
+                                <input type="date" required
+                                    class="w-full bg-transparent border-b border-carbon py-2 focus:outline-none focus:border-dorado text-gris font-medium">
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-[0.6rem] uppercase tracking-widest text-gris/50 mb-1 font-bold">Hora
+                                    exacta / Exact time</label>
+                                <input type="time" required
+                                    class="w-full bg-transparent border-b border-carbon py-2 focus:outline-none focus:border-dorado text-gris font-medium">
+                            </div>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Lugar de nacimiento / City & Country of birth" required
+                                class="w-full bg-transparent border-b border-carbon py-2 focus:outline-none focus:border-dorado placeholder-gris/50 font-medium">
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-carbon text-cal py-5 text-[0.7rem] uppercase tracking-[0.25em] font-bold hover:bg-dorado transition-colors mt-8">
+                            <span class="lang-es">Ir al pago seguro</span><span class="lang-en">Proceed to
+                                checkout</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="bg-la-geria py-48 px-6 md:px-16 text-center text-cal border-t border-carbon">
+    <footer class="bg-header-roca py-40 px-6 text-center text-white border-t border-carbon">
         <div class="max-w-4xl mx-auto reveal">
+            <div class="font-serif font-normal text-6xl md:text-8xl tracking-widest mb-6">
+                FE<span class="punto-dorado"></span>NYA
+            </div>
+            <p class="lang-es text-[0.65rem] font-medium uppercase tracking-[0.4em] text-dorado mb-16">Lo humano del
+                cosmos</p>
+            <p class="lang-en text-[0.65rem] font-medium uppercase tracking-[0.4em] text-dorado mb-16">The human side of
+                the cosmos</p>
 
-            <div class="flex items-center justify-center gap-2 font-serif text-5xl tracking-widest font-light mb-8">
-                FE<span class="w-2.5 h-2.5 bg-dorado rounded-full"></span>NYA
+            <div class="space-y-4 mb-20 text-lg font-light tracking-wide">
+                <p><a href="mailto:fenyaastrology@gmail.com"
+                        class="hover:text-dorado transition-colors">fenyaastrology@gmail.com</a></p>
+                <p><a href="https://instagram.com/fenyastrologia" target="_blank"
+                        class="hover:text-dorado transition-colors">@fenyastrologia</a></p>
             </div>
 
-            <p class="lang-es text-xs uppercase tracking-[0.4em] text-dorado mb-16">
-                Lo humano del cosmos
-            </p>
-            <p class="lang-en text-xs uppercase tracking-[0.4em] text-dorado mb-16">
-                The human side of the cosmos
-            </p>
-
-            <div class="space-y-4 mb-20 text-lg font-light">
+            <div class="space-y-6 text-xs font-medium uppercase tracking-[0.2em] text-white/50">
                 <p>
-                    <a href="mailto:fenyaastrology@gmail.com" class="hover:text-dorado transition-colors">
-                        fenyaastrology@gmail.com
-                    </a>
+                    <span class="lang-es">© FE·NYA | Proyecto creado por Graciana Virasoro</span>
+                    <span class="lang-en">© FE·NYA | Project created by Graciana Virasoro</span>
                 </p>
                 <p>
-                    <a href="https://instagram.com/fenyastrologia" target="_blank"
-                        class="hover:text-dorado transition-colors">
-                        @fenyastrologia
-                    </a>
+                    <a href="https://www.doyo.pro" target="_blank"
+                        class="hover:text-dorado transition-colors">Desarrollado por Doyo.Pro</a>
                 </p>
-            </div>
-
-            <div class="space-y-2 text-xs uppercase tracking-[0.2em] text-white/50">
-                <p>
-                    <span class="lang-es">Proyecto creado por Graciana Virasoro</span>
-                    <span class="lang-en">Project created by Graciana Virasoro</span>
-                </p>
-                <p><span class="text-dorado">©</span> FE·NYA</p>
             </div>
         </div>
     </footer>
 
+    <script src="main.js"></script>
     <script>
-        // SCRIPT 1: CAMBIO DE IDIOMA GLOBAL
-        function setLang(lang) {
-            document.documentElement.setAttribute('data-lang', lang);
-            localStorage.setItem('fenya-lang', lang);
-
-            const btnEs = document.getElementById('btn-es');
-            const btnEn = document.getElementById('btn-en');
-
-            if (lang === 'es') {
-                btnEs.classList.add('text-cal', 'border-b', 'border-dorado');
-                btnEs.classList.remove('text-white/50');
-                btnEn.classList.remove('text-cal', 'border-b', 'border-dorado');
-                btnEn.classList.add('text-white/50');
-            } else {
-                btnEn.classList.add('text-cal', 'border-b', 'border-dorado');
-                btnEn.classList.remove('text-white/50');
-                btnEs.classList.remove('text-cal', 'border-b', 'border-dorado');
-                btnEs.classList.add('text-white/50');
-            }
-        }
-
-        // SCRIPT 2: REVEAL ANIMATIONS
-        function reveal() {
-            const reveals = document.querySelectorAll(".reveal");
-            for (let i = 0; i < reveals.length; i++) {
-                const windowHeight = window.innerHeight;
-                const elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 80) { reveals[i].classList.add("active"); }
-            }
-        }
-
-        window.addEventListener("scroll", reveal);
-
-        // SCRIPT 3: INICIALIZAR ESTADO DE IDIOMA (Lee de LocalStorage)
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('fenya-lang') || 'es';
-            setLang(savedLang);
-            setTimeout(reveal, 100);
-        });
-
-        // SCRIPT 4: ENVÍO DE FORMULARIO A STRIPE
-        const form = document.getElementById('reserva-form');
-        form.addEventListener('submit', function (e) {
+        // Lógica de redirección a Stripe según selección
+        document.getElementById('checkout-form').addEventListener('submit', function (e) {
             e.preventDefault();
-
-            // Mostrar mensaje de carga
-            const loadingMsg = document.querySelector('.loading-msg');
-            loadingMsg.style.display = 'block';
-
-            // 1. Recolectar datos y enviarlos a NetlifyForms conceptualmente
-            const formData = new FormData(form);
-            fetch('/', {
-                method: 'POST',
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(formData).toString()
-            })
-                .then(() => {
-                    // 2. Si el envío conceptual a Netlify tiene éxito, redirigir a Stripe
-                    const selectElement = document.getElementById('lectura');
-                    const selectedValue = selectElement.value;
-
-                    if (selectedValue.includes('stripe.com')) {
-                        // Redirección exitosa a Stripe
-                        window.location.href = selectedValue;
-                    } else {
-                        // Es experiencia hotel o similar
-                        const currentLang = document.documentElement.getAttribute('data-lang');
-                        alert(currentLang === 'es' ?
-                            "¡Solicitud recibida! Te contactaremos pronto para tu experiencia en el hotel." :
-                            "Request received! We will contact you shortly regarding your hotel experience.");
-                        window.location.href = "index.html";
-                    }
-                })
-                .catch((error) => {
-                    // Si falla el envío conceptual
-                    const currentLang = document.documentElement.getAttribute('data-lang');
-                    alert(currentLang === 'es' ?
-                        'Hubo un error al procesar tu solicitud. Por favor, inténtalo de nuevo.' :
-                        'There was an error processing your request. Please try again.');
-                    loadingMsg.style.display = 'none';
-                });
+            const url = document.getElementById('tipo-lectura').value;
+            window.location.href = url;
         });
     </script>
 </body>

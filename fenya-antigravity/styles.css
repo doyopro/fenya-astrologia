@@ -1,0 +1,124 @@
+/* --- CONFIGURACIÓN E IDENTIDAD VISUAL --- */
+:root {
+    --bg-cal: #FBFBF9;
+    --bg-arena: #F4F1EB;
+    --text-carbon: #181818;
+    --text-gris: #5C5C5C;
+    --accent-dorado: #9B8258;
+    --line-color: rgba(0, 0, 0, 0.12);
+}
+
+/* --- SISTEMA BILINGÜE ESTRICTO --- */
+.lang-en {
+    display: none !important;
+}
+
+html[data-lang="en"] .lang-en {
+    display: block !important;
+}
+
+html[data-lang="en"] span.lang-en,
+html[data-lang="en"] a.lang-en {
+    display: inline-block !important;
+}
+
+html[data-lang="en"] .lang-es {
+    display: none !important;
+}
+
+/* --- TIPOGRAFÍA Y CUERPO --- */
+body {
+    background-color: var(--bg-cal);
+    color: var(--text-carbon);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- FONDOS --- */
+.bg-header-roca {
+    background-image: linear-gradient(rgba(24, 24, 24, 0.85), rgba(24, 24, 24, 0.95)), url('img/piedra.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-paisaje-suave {
+    background-image: linear-gradient(rgba(251, 251, 249, 0.85), rgba(251, 251, 249, 0.95)), url('img/paisaje.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-experiencias-dark {
+    background-color: #333333;
+    color: var(--bg-cal);
+}
+
+/* --- PUNTO DORADO LISO (Logo FE·NYA) --- */
+.punto-dorado {
+    display: inline-block;
+    width: 0.14em;
+    height: 0.14em;
+    background-color: var(--accent-dorado);
+    border-radius: 50%;
+    margin: 0 0.06em;
+    position: relative;
+    top: -0.24em;
+    /* Centrado óptico exacto para Playfair Display */
+    box-shadow: none;
+    /* Liso y sin relieves */
+}
+
+/* --- MARCO FUNDADORA --- */
+.marco-circular {
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    border-radius: 50%;
+    padding: 8px;
+    border: 1px solid var(--accent-dorado);
+}
+
+.marco-circular img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* --- ANIMACIONES Y BOTONES --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.btn-editorial {
+    display: inline-block;
+    padding: 1rem 3rem;
+    border: 1px solid #181818;
+    color: #181818;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    transition: all 0.4s ease;
+}
+
+.btn-editorial:hover {
+    background-color: #181818;
+    color: #FBFBF9;
+}
+
+.btn-editorial-light {
+    border-color: #FBFBF9;
+    color: #FBFBF9;
+}
+
+.btn-editorial-light:hover {
+    background-color: #FBFBF9;
+    color: #181818;
+}
