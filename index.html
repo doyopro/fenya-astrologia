@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FE·NYA | Lo humano del cosmos</title>
 
-    <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="FE·NYA | Lo humano del cosmos" />
-    <meta property="og:description" content="Astrología como lenguaje simbólico" />
+    <meta property="og:description"
+        content="Astrología como lenguaje simbólico para reconocer tus Energías Esenciales" />
     <meta property="og:image" content="img/logo-compartir.jpeg" />
     <meta property="og:url" content="https://fenya.es" />
     <meta property="og:type" content="website" />
@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
@@ -31,23 +31,68 @@
             }
         }
     </script>
+    <style>
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .wa-float:hover {
+            transform: scale(1.1);
+        }
+
+        .wa-icon-main {
+            width: 32px;
+            height: 32px;
+            fill: currentColor;
+        }
+
+        .wa-icon-btn {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+    </style>
 </head>
 
-<body class="font-sans font-light text-carbon">
+<body class="font-sans font-light text-carbon bg-cal">
+
+    <a href="https://wa.me/34622387870" class="wa-float" target="_blank" aria-label="WhatsApp">
+        <svg class="wa-icon-main" viewBox="0 0 448 512">
+            <path
+                d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.7 17.7 68.9 27.1 106.1 27.1h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.1 0-65.6-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.4-8.6-44.6-27.5-16.4-14.7-27.5-32.8-30.7-38.4-3.2-5.6-.3-8.6 2.5-11.4 2.5-2.5 5.5-6.5 8.3-9.7 2.8-3.2 3.7-5.5 5.5-9.2 1.9-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 34.9 2.1 10.6-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
+        </svg>
+    </a>
 
     <header
         class="fixed top-0 w-full flex justify-between items-center px-8 py-5 bg-header-roca z-50 text-white shadow-sm">
-        <a href="#"
+        <a href="#inicio"
             class="font-serif text-2xl tracking-widest uppercase hover:text-dorado transition-colors font-normal">
             FE<span class="punto-dorado"></span>NYA
         </a>
         <nav class="hidden md:flex gap-10 text-[0.7rem] uppercase tracking-[0.2em] font-medium">
+            <a href="#inicio" class="hover:text-dorado transition-colors"><span class="lang-es">Inicio</span><span
+                    class="lang-en">Home</span></a>
             <a href="#fundadora" class="hover:text-dorado transition-colors"><span class="lang-es">La
                     Fundadora</span><span class="lang-en">Founder</span></a>
-            <a href="services.html" class="hover:text-dorado transition-colors"><span class="lang-es">Lecturas y
+            <a href="#servicios" class="hover:text-dorado transition-colors"><span class="lang-es">Lecturas y
                     Servicios</span><span class="lang-en">Readings & Services</span></a>
-            <a href="#experiencias" class="hover:text-dorado transition-colors"><span
-                    class="lang-es">Experiencias</span><span class="lang-en">Experiences</span></a>
+            <a href="#proceso" class="hover:text-dorado transition-colors"><span class="lang-es">Solicitar</span><span
+                    class="lang-en">Request</span></a>
         </nav>
         <div class="flex gap-4 text-xs tracking-widest text-white/50 font-medium">
             <button onclick="setLang('es')" id="btn-es" class="hover:text-white transition-colors">ES</button>
@@ -56,7 +101,7 @@
         </div>
     </header>
 
-    <main class="pt-32">
+    <main id="inicio" class="pt-32">
         <section class="py-32 px-6 flex flex-col items-center text-center">
             <h1 class="font-serif font-normal text-7xl md:text-[8.5rem] tracking-tight text-carbon mb-4 reveal">
                 FE<span class="punto-dorado"></span>NYA
@@ -66,18 +111,18 @@
             <p class="lang-en font-sans text-xs uppercase tracking-[0.4em] text-gris mb-20 reveal font-medium">The human
                 side of the cosmos</p>
 
-            <p class="lang-es max-w-3xl text-2xl text-gris font-serif italic mb-12 reveal">
+            <p class="lang-es max-w-3xl text-2xl text-gris font-serif italic mb-12 reveal leading-relaxed">
                 "La astrología, entendida como lenguaje simbólico, permite reconocer las Energías Esenciales y
                 comprender las dinámicas que dan forma a nuestra experiencia humana."
             </p>
-            <p class="lang-en max-w-3xl text-2xl text-gris font-serif italic mb-12 reveal">
+            <p class="lang-en max-w-3xl text-2xl text-gris font-serif italic mb-12 reveal leading-relaxed">
                 "Astrology, understood as a symbolic language, allows us to recognize Essential Energies and understand
                 the dynamics that shape our human experience."
             </p>
 
             <div class="text-2xl text-dorado tracking-[2em] pl-[2em] mb-16 reveal">☉ ☽ ☿</div>
-            <a href="services.html" class="lang-es btn-editorial reveal">Explorar lecturas</a>
-            <a href="services.html" class="lang-en btn-editorial reveal">Explore readings</a>
+            <a href="#servicios" class="lang-es btn-editorial reveal">Explorar lecturas</a>
+            <a href="#servicios" class="lang-en btn-editorial reveal">Explore readings</a>
         </section>
 
         <section class="bg-paisaje-suave py-32 px-6 md:px-16">
@@ -89,30 +134,35 @@
 
                 <div class="lang-es space-y-6 text-lg text-gris leading-relaxed">
                     <p>Las Energías Esenciales son las configuraciones y vínculos que se establecen dentro de la carta
-                        natal. No se entienden como rasgos aislados, sino como <strong>energías en relación</strong>.
-                    </p>
-                    <p>La astrología reconoce que, además de nuestro cuerpo de materia, también somos un cuerpo de
-                        energía. Dentro de nosotros se mueven distintas fuerzas que influyen en cómo sentimos, pensamos
-                        y actuamos.</p>
-                    <p>Cuando empezamos a reconocer esas energías, algo comienza a ordenarse. Podemos darles su lugar y
-                        comprender mejor cómo se relacionan entre sí. La intención no es alcanzar un equilibrio ideal,
-                        sino encontrar el propio, el que surge de la singularidad de cada persona.</p>
+                        natal. Surgen de la posición de los planetas, los signos y las casas, y, sobre todo, de cómo se
+                        relacionan entre sí. En FE·NYA, este es el enfoque desde el que se trabaja: comprender la carta
+                        natal como un sistema de energías en relación.</p>
+                    <p>No se entienden como rasgos aislados, sino como dinámicas que se organizan y toman forma en
+                        nuestra manera de sentir, pensar y actuar. Al reconocerlas, empezamos a ver con más claridad
+                        cómo funciona nuestra dinámica.</p>
+                    <p>Desde ahí, se abre la posibilidad de transformar aquello que nos pesa o nos desafía, y también de
+                        reconocer nuestras propias potencialidades, para empezar a habitarlas desde un lugar más
+                        consciente, en coherencia con nuestra singularidad, con más confianza en nosotros y en mayor
+                        sintonía con lo que nos rodea.</p>
                 </div>
 
                 <div class="lang-en space-y-6 text-lg text-gris leading-relaxed">
-                    <p>Essential Energies are the configurations and bonds established within the natal chart. They are
-                        not understood as isolated traits, but as <strong>relational energies</strong>.</p>
-                    <p>Astrology recognizes that, besides our physical body, we are also a body of energy. Within us
-                        move different forces that influence how we feel, think and act.</p>
-                    <p>When we begin to recognize these energies, something begins to order itself. We can give them
-                        their place and better understand how they relate to each other. The intention is not to reach
-                        an ideal balance, but to find our own, the one that arises from the singularity of each person.
-                    </p>
+                    <p>Essential Energies are the configurations and bonds established within the natal chart. They
+                        arise from the position of the planets, the signs, and the houses, and above all, how they
+                        relate to each other. At FE·NYA, this is the working approach: understanding the natal chart as
+                        a system of energies in relation.</p>
+                    <p>They are not understood as isolated traits, but as dynamics that organize and take shape in our
+                        way of feeling, thinking, and acting. By recognizing them, we begin to see our dynamics more
+                        clearly.</p>
+                    <p>From there, the possibility opens up to transform what weighs us down or challenges us, and also
+                        to recognize our own potential, to begin inhabiting it from a more conscious place, in coherence
+                        with our singularity, with more confidence in ourselves and in greater harmony with our
+                        surroundings.</p>
                 </div>
             </div>
         </section>
 
-        <section id="fundadora" class="bg-cal py-32 px-6 md:px-16">
+        <section id="fundadora" class="bg-cal py-32 px-6 md:px-16 border-t border-line/20">
             <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 <div class="reveal">
                     <h2 class="lang-es font-serif font-normal text-5xl md:text-6xl text-carbon mb-10">Sobre la fundadora
@@ -121,146 +171,356 @@
                     </h2>
 
                     <div class="lang-es space-y-6 text-lg text-gris leading-relaxed">
-                        <p>FE·NYA es un proyecto creado por Graciana Virasoro.</p>
-                        <p>Desde hace más de diez años trabajo con la carta natal como herramienta de lectura simbólica
-                            y comprensión relacional. Mi recorrido ha estado marcado por el estudio constante y por una
-                            práctica sostenida de interpretación.</p>
-                        <p>A lo largo del tiempo he podido ver cómo el trabajo con la carta natal abre un espacio de
-                            reflexión profundo sobre la propia experiencia. Muchas veces aquello que vivimos como
-                            confusión o dificultad empieza a adquirir otra perspectiva cuando podemos mirarlo con mayor
-                            distancia y comprensión.</p>
-                        <p>A lo largo de la historia se nos ha repetido una misma invitación: conocernos a nosotros
-                            mismos. En mi experiencia, la astrología ofrece un lenguaje particularmente valioso para
-                            recorrer ese camino.</p>
+                        <p>Mi nombre es Graciana Virasoro. Creé FE·NYA como un espacio para bajar el conocimiento del
+                            cielo a la tierra y habitarlo. Desde hace más de diez años trabajo con la carta natal como
+                            una herramienta de lectura simbólica y comprensión relacional.</p>
+                        <p>Mi recorrido ha estado marcado por el estudio constante, pero, sobre todo, por la práctica
+                            sostenida de interpretar cómo la energía se manifiesta en la vida cotidiana. Este camino
+                            también nace de mi propia experiencia. El trabajo con mi carta natal fue —y sigue siendo—
+                            una forma de dar lugar, comprender y empezar a integrar esas partes.</p>
+                        <p>La carta natal no se agota en una sola lectura: es un mapa al que puedes volver, y que cobra
+                            nuevos sentidos según el momento que estés viviendo. Con el tiempo, esa forma de trabajar se
+                            fue ordenando en lo que hoy llamo Energías Esenciales.</p>
+                        <p>FE·NYA nació en Lanzarote, una isla que me inspira por su naturaleza volcánica y la
+                            inmensidad de su mar. Esa fuerza de la tierra, cruda y esencial, es la que busco transmitir
+                            en este enfoque.</p>
                     </div>
 
                     <div class="lang-en space-y-6 text-lg text-gris leading-relaxed">
-                        <p>FE·NYA is a project created by Graciana Virasoro.</p>
-                        <p>For more than ten years I have worked with the natal chart as a tool for symbolic reading and
-                            relational understanding. My journey has been marked by constant study and a sustained
-                            practice of interpretation.</p>
-                        <p>Over time I have been able to see how working with the natal chart opens a space of deep
-                            reflection on our own experience. Often that which we experience as confusion or difficulty
-                            begins to acquire another perspective when we can look at it with greater distance and
-                            understanding.</p>
-                        <p>Throughout history the same invitation has been repeated to us: to know ourselves. In my
-                            experience, astrology offers a particularly valuable language to walk that path.</p>
+                        <p>My name is Graciana Virasoro. I created FE·NYA as a space to bring the knowledge of the sky
+                            down to earth and inhabit it. For over ten years, I have worked with the natal chart as a
+                            tool for symbolic reading and relational understanding.</p>
+                        <p>My journey has been marked by constant study, but above all, by the sustained practice of
+                            interpreting how energy manifests in daily life. This path also stems from my own
+                            experience. Working with my natal chart was—and continues to be—a way to make room for,
+                            understand, and begin to integrate those parts.</p>
+                        <p>The natal chart is not exhausted in a single reading: it is a map you can return to, taking
+                            on new meanings depending on the moment you are living. Over time, this way of working was
+                            structured into what I now call Essential Energies.</p>
+                        <p>FE·NYA was born in Lanzarote, an island that inspires me with its volcanic nature and the
+                            immensity of its sea. That force of the earth, raw and essential, is what I seek to transmit
+                            in this approach.</p>
                     </div>
                 </div>
 
-                <div class="reveal">
-                    <div class="marco-circular">
+                <div class="reveal text-center">
+                    <div class="marco-circular mx-auto">
                         <img src="img/graciana.jpeg" alt="Graciana Virasoro">
                     </div>
-                    <div class="text-center mt-10">
+                    <div class="mt-10">
                         <div class="text-2xl text-dorado tracking-[1em] pl-[1em] mb-6">♄ ♃</div>
-                        <p class="lang-es font-serif italic text-2xl text-carbon px-8">"Creo que cuando logramos
-                            reconocer algo dentro de nosotros, también cambia la forma en que habitamos el mundo. Y es
-                            ahí donde comienzan los cambios más profundos."</p>
-                        <p class="lang-en font-serif italic text-2xl text-carbon px-8">"I believe that when we manage to
-                            recognize something within ourselves, the way we inhabit the world also changes. And that is
-                            where the deepest changes begin."</p>
-                        <p class="lang-es text-sm text-gris mt-6 font-medium">FE·NYA nació en Lanzarote, lugar donde
-                            actualmente desarrollo el proyecto y desde donde continúo investigando y acompañando
-                            procesos.</p>
-                        <p class="lang-en text-sm text-gris mt-6 font-medium">FE·NYA was born in Lanzarote, where I
-                            currently develop the project and from where I continue researching and accompanying
-                            processes.</p>
+                        <p class="lang-es font-serif italic text-2xl text-carbon px-8 leading-relaxed">"Muchas veces, lo
+                            que nos pasa tiene que ver con no reconocer la potencia de lo que nos habita. Al
+                            reconocerlo, cambia la forma en que lo vivimos y nos posicionamos."</p>
+                        <p class="lang-en font-serif italic text-2xl text-carbon px-8 leading-relaxed">"Often, what
+                            happens to us has to do with not recognizing the power of what inhabits us. Upon recognizing
+                            it, the way we live and position ourselves changes."</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="lecturas" class="bg-cal py-32 px-6 md:px-16 border-t border-line/20">
-            <div class="max-w-4xl mx-auto text-center reveal mb-16">
-                <h2 class="lang-es font-serif font-normal text-5xl md:text-6xl text-carbon mb-6">FE·NYA · Lecturas</h2>
-                <h2 class="lang-en font-serif font-normal text-5xl md:text-6xl text-carbon mb-6">FE·NYA · Readings</h2>
-                <p class="lang-es text-lg text-gris">Un lenguaje claro y accesible, pensado para acompañar procesos
-                    personales desde la comprensión.</p>
-                <p class="lang-en text-lg text-gris">A clear and accessible language, designed to accompany personal
-                    processes through understanding.</p>
+        <section id="servicios" class="bg-cal py-32 border-t border-line/20">
+            <div class="max-w-4xl mx-auto text-center reveal mb-20 px-6">
+                <div
+                    class="inline-block border border-dorado text-dorado px-5 py-2 rounded-full text-[0.65rem] font-medium uppercase tracking-widest mb-10 bg-dorado/5">
+                    <span class="lang-es">🌟 Agenda Abierta - Plazas Limitadas</span>
+                    <span class="lang-en">🌟 Open Agenda - Limited Spots</span>
+                </div>
+                <h2 class="lang-es font-serif font-normal text-5xl md:text-6xl text-carbon mb-6">Propuestas Energías
+                    Esenciales</h2>
+                <h2 class="lang-en font-serif font-normal text-5xl md:text-6xl text-carbon mb-6">Essential Energies
+                    Proposals</h2>
+                <p class="lang-es text-lg text-gris font-serif italic">"Tres niveles de encuentro para reconocer tus
+                    Energías Esenciales."</p>
+                <p class="lang-en text-lg text-gris font-serif italic">"Three levels of encounter to recognize your
+                    Essential Energies."</p>
             </div>
 
-            <div
-                class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-b border-line/30 py-16">
+            <div class="px-6 md:px-16 lg:px-24 py-24 bg-cal border-t border-line/20 reveal">
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-12 items-center">
+                    <div>
+                        <h2 class="lang-es font-serif font-normal text-4xl md:text-5xl text-carbon mb-4">1. Tu mapa
+                            escrito</h2>
+                        <h2 class="lang-en font-serif font-normal text-4xl md:text-5xl text-carbon mb-4">1. Your written
+                            map</h2>
 
-                <div class="text-center reveal flex flex-col items-center">
-                    <h3 class="lang-es font-serif font-normal text-3xl text-carbon mb-4">Energías Esenciales</h3>
-                    <h3 class="lang-en font-serif font-normal text-3xl text-carbon mb-4">Essential Energies</h3>
-                    <p class="lang-es text-gris mb-6 flex-grow">Integración de los tres pilares de la carta natal: Sol
-                        (identidad), Luna (mundo emocional) y Ascendente (experiencia).</p>
-                    <p class="lang-en text-gris mb-6 flex-grow">Integration of the three pillars of the natal chart: Sun
-                        (identity), Moon (emotions) and Ascendant (experience).</p>
-                    <a href="services.html" class="btn-editorial w-full"><span class="lang-es">Descubre más</span><span
-                            class="lang-en">Discover more</span></a>
+                        <p class="lang-es text-sm uppercase tracking-widest text-dorado mb-8 font-medium">Enfoque:
+                            Conocerte a través de tu carta natal</p>
+                        <p class="lang-en text-sm uppercase tracking-widest text-dorado mb-8 font-medium">Focus: Know
+                            yourself through your natal chart</p>
+
+                        <div class="lang-es text-lg text-gris leading-relaxed mb-8">
+                            Un documento claro y personalizado para leer con calma y volver a él cada vez que lo
+                            necesites. Es una interpretación escrita de tu carta natal, donde traduzco el lenguaje de la
+                            astrología a tu propia experiencia, para que puedas comprender tus Energías Esenciales y
+                            reconocer cómo se expresan en tu vida.
+                        </div>
+                        <div class="lang-en text-lg text-gris leading-relaxed mb-8">
+                            A clear and personalized document to read calmly and return to whenever you need it. It is a
+                            written interpretation of your natal chart, where I translate the language of astrology into
+                            your own experience, so you can understand your Essential Energies and recognize how they
+                            are expressed in your life.
+                        </div>
+
+                        <ul class="space-y-3 text-gris font-medium">
+                            <li class="flex items-start"><span class="text-dorado mr-3 mt-1">✦</span> <span
+                                    class="lang-es"><strong>Qué recibes:</strong> Una interpretación personalizada en
+                                    PDF enviada a tu correo electrónico.</span><span class="lang-en"><strong>What you
+                                        receive:</strong> A personalized interpretation in PDF sent to your
+                                    email.</span></li>
+                        </ul>
+                    </div>
+                    <div
+                        class="flex flex-col md:items-end md:text-right bg-arena p-10 rounded-sm border border-dorado/20">
+                        <div class="font-serif text-5xl text-dorado mb-4">45€</div>
+                        <p class="text-xs uppercase tracking-widest text-gris font-medium leading-relaxed mb-10">
+                            <span class="lang-es">A tu propio ritmo<br>Documento digital</span>
+                            <span class="lang-en">At your own pace<br>Digital document</span>
+                        </p>
+                        <a href="https://wa.me/34622387870?text=Hola%20Graciana,%20me%20gustar%C3%ADa%20consultar%20disponibilidad%20para%20'Tu%20mapa%20escrito'%20(45%E2%82%AC)."
+                            target="_blank"
+                            class="btn-editorial-wa w-full text-center flex items-center justify-center gap-3">
+                            <svg class="wa-icon-btn" viewBox="0 0 448 512">
+                                <path
+                                    d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.7 17.7 68.9 27.1 106.1 27.1h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.1 0-65.6-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.4-8.6-44.6-27.5-16.4-14.7-27.5-32.8-30.7-38.4-3.2-5.6-.3-8.6 2.5-11.4 2.5-2.5 5.5-6.5 8.3-9.7 2.8-3.2 3.7-5.5 5.5-9.2 1.9-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 34.9 2.1 10.6-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
+                            </svg>
+                            <span class="lang-es">Consultar disponibilidad</span><span class="lang-en">Check
+                                availability</span>
+                        </a>
+                    </div>
                 </div>
-
-                <div
-                    class="text-center reveal flex flex-col items-center border-t md:border-t-0 md:border-l md:border-r border-line/30 pt-12 md:pt-0 md:px-8">
-                    <h3 class="lang-es font-serif font-normal text-3xl text-carbon mb-4">Esenciales Completas</h3>
-                    <h3 class="lang-en font-serif font-normal text-3xl text-carbon mb-4">Full Essential</h3>
-                    <p class="lang-es text-gris mb-6 flex-grow">Desarrollo exhaustivo de la estructura natal y procesos
-                        evolutivos. Análisis del mapa completo: planetas, casas y aspectos.</p>
-                    <p class="lang-en text-gris mb-6 flex-grow">Comprehensive development of the natal structure. Full
-                        analysis: planets, houses, and aspects.</p>
-                    <a href="services.html" class="btn-editorial w-full"><span class="lang-es">Descubre más</span><span
-                            class="lang-en">Discover more</span></a>
-                </div>
-
-                <div
-                    class="text-center reveal flex flex-col items-center border-t md:border-t-0 border-line/30 pt-12 md:pt-0">
-                    <h3 class="lang-es font-serif font-normal text-3xl text-carbon mb-4">Completas + Sesión</h3>
-                    <h3 class="lang-en font-serif font-normal text-3xl text-carbon mb-4">Full + Session</h3>
-                    <p class="lang-es text-gris mb-6 flex-grow">Integración de la lectura en PDF con una sesión online
-                        de 60 minutos para profundizar e integrar el contenido.</p>
-                    <p class="lang-en text-gris mb-6 flex-grow">Integration of the PDF reading with a 60-minute online
-                        session to deepen and integrate the content.</p>
-                    <a href="services.html" class="btn-editorial w-full"><span class="lang-es">Descubre más</span><span
-                            class="lang-en">Discover more</span></a>
-                </div>
-
             </div>
 
-            <div class="text-center mt-16 reveal">
-                <div class="text-2xl text-dorado tracking-[1.5em] pl-[1.5em] opacity-80">♅ ♆ ♇</div>
+            <div class="px-6 md:px-16 lg:px-24 py-24 bg-arena border-t border-b border-line/20 reveal">
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-12 items-center">
+                    <div
+                        class="order-2 md:order-1 flex flex-col md:items-start bg-cal p-10 rounded-sm border border-dorado/20">
+                        <div class="font-serif text-5xl text-dorado mb-4">95€</div>
+                        <p class="text-xs uppercase tracking-widest text-gris font-medium leading-relaxed mb-10">
+                            <span class="lang-es">Mapa PDF +<br>Sesión 60 min Online</span>
+                            <span class="lang-en">PDF Map +<br>60m Session Online</span>
+                        </p>
+                        <a href="https://wa.me/34622387870?text=Hola%20Graciana,%20me%20gustar%C3%ADa%20consultar%20disponibilidad%20para%20'Tu%20mapa%20escrito%20+%20Sesi%C3%B3n'%20(95%E2%82%AC)."
+                            target="_blank"
+                            class="btn-editorial-wa w-full text-center flex items-center justify-center gap-3">
+                            <svg class="wa-icon-btn" viewBox="0 0 448 512">
+                                <path
+                                    d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.7 17.7 68.9 27.1 106.1 27.1h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.1 0-65.6-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.4-8.6-44.6-27.5-16.4-14.7-27.5-32.8-30.7-38.4-3.2-5.6-.3-8.6 2.5-11.4 2.5-2.5 5.5-6.5 8.3-9.7 2.8-3.2 3.7-5.5 5.5-9.2 1.9-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 34.9 2.1 10.6-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
+                            </svg>
+                            <span class="lang-es">Consultar disponibilidad</span><span class="lang-en">Check
+                                availability</span>
+                        </a>
+                    </div>
+                    <div class="order-1 md:order-2 md:pl-8">
+                        <h2 class="lang-es font-serif font-normal text-4xl md:text-5xl text-carbon mb-4">2. Tu mapa
+                            escrito + sesión</h2>
+                        <h2 class="lang-en font-serif font-normal text-4xl md:text-5xl text-carbon mb-4">2. Written map
+                            + session</h2>
+
+                        <p class="lang-es text-sm uppercase tracking-widest text-dorado mb-8 font-medium">Enfoque:
+                            Comprender tu carta y tu momento actual</p>
+                        <p class="lang-en text-sm uppercase tracking-widest text-dorado mb-8 font-medium">Focus:
+                            Understand your chart and current moment</p>
+
+                        <div class="lang-es text-lg text-gris leading-relaxed mb-8">
+                            Una propuesta para ir más allá de la lectura y trabajar tu carta natal en relación con lo
+                            que estás viviendo hoy. Incluye el mapa escrito y una sesión individual, donde profundizamos
+                            en lo que aparece en tu carta y lo llevamos a tu experiencia. Un espacio para ordenar, hacer
+                            preguntas y empezar a integrar lo que vas reconociendo.
+                        </div>
+                        <div class="lang-en text-lg text-gris leading-relaxed mb-8">
+                            A proposal to go beyond the reading and work with your natal chart in relation to what you
+                            are experiencing today. It includes the written map and an individual session, where we
+                            delve into what appears in your chart and bring it to your experience. A space to organize,
+                            ask questions, and begin to integrate what you are recognizing.
+                        </div>
+
+                        <ul class="space-y-3 text-gris font-medium">
+                            <li class="flex items-start"><span class="text-dorado mr-3 mt-1">✦</span> <span
+                                    class="lang-es"><strong>Qué recibes:</strong> Tu mapa escrito personalizado (PDF) y
+                                    una sesión online individual de 60 minutos.</span><span class="lang-en"><strong>What
+                                        you receive:</strong> Your personalized written map (PDF) and a 60-minute
+                                    individual online session.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="px-6 md:px-16 lg:px-24 py-24 bg-cal reveal">
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-12 items-center">
+                    <div>
+                        <h2 class="lang-es font-serif font-normal text-4xl md:text-5xl text-carbon mb-4">3. El proceso
+                        </h2>
+                        <h2 class="lang-en font-serif font-normal text-4xl md:text-5xl text-carbon mb-4">3. The process
+                        </h2>
+
+                        <p class="lang-es text-sm uppercase tracking-widest text-dorado mb-8 font-medium">Enfoque: La
+                            carta natal como un sistema vivo</p>
+                        <p class="lang-en text-sm uppercase tracking-widest text-dorado mb-8 font-medium">Focus: The
+                            natal chart as a living system</p>
+
+                        <div class="lang-es text-lg text-gris leading-relaxed mb-6">
+                            Un recorrido de tres sesiones para trabajar tu carta natal en profundidad. Trabajamos tu
+                            carta natal en relación con tu momento actual, integrando la Revolución Solar (el clima
+                            energético de tu año) y los tránsitos (los movimientos actuales del cielo) para comprender
+                            qué se está moviendo hoy y cómo se expresa en tu experiencia.
+                        </div>
+                        <div class="lang-es text-md text-gris leading-relaxed mb-8 italic">
+                            <strong>Cómo es el proceso:</strong> Primero recibes tu mapa escrito personalizado. A partir
+                            de ahí, realizamos 3 sesiones online de 60 minutos, con una frecuencia aproximada de 15 días
+                            entre cada una.
+                        </div>
+
+                        <div class="lang-en text-lg text-gris leading-relaxed mb-6">
+                            A journey of three sessions to work with your natal chart in depth. We work with your natal
+                            chart in relation to your current moment, integrating the Solar Return (the energetic
+                            climate of your year) and transits (the current movements of the sky) to understand what is
+                            moving today and how it expresses itself in your experience.
+                        </div>
+                        <div class="lang-en text-md text-gris leading-relaxed mb-8 italic">
+                            <strong>The process:</strong> First you receive your personalized written map. From there,
+                            we hold 3 online sessions of 60 minutes, approximately every 15 days.
+                        </div>
+
+                        <ul class="space-y-3 text-gris font-medium">
+                            <li class="flex items-start"><span class="text-dorado mr-3 mt-1">✦</span> <span
+                                    class="lang-es"><strong>Qué recibes:</strong> Tu mapa escrito personalizado (PDF) y
+                                    3 sesiones online individuales de 60 minutos.</span><span
+                                    class="lang-en"><strong>What you receive:</strong> Your personalized written map
+                                    (PDF) and 3 individual 60-minute online sessions.</span></li>
+                        </ul>
+                    </div>
+                    <div
+                        class="flex flex-col md:items-end md:text-right bg-arena p-10 rounded-sm border border-dorado/20">
+                        <div class="font-serif text-5xl text-dorado mb-4">225€</div>
+                        <p class="text-xs uppercase tracking-widest text-gris font-medium leading-relaxed mb-10">
+                            <span class="lang-es">Acompañamiento<br>Continuado</span>
+                            <span class="lang-en">Continuous<br>Accompaniment</span>
+                        </p>
+                        <a href="https://wa.me/34622387870?text=Hola%20Graciana,%20me%20interesa%20iniciar%20'El%20proceso'%20de%20acompa%C3%B1amiento%20(225%E2%82%AC).%20%C2%BFTienes%20disponibilidad%3F"
+                            target="_blank"
+                            class="btn-editorial-wa w-full text-center flex items-center justify-center gap-3">
+                            <svg class="wa-icon-btn" viewBox="0 0 448 512">
+                                <path
+                                    d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.7 17.7 68.9 27.1 106.1 27.1h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.1 0-65.6-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.4-8.6-44.6-27.5-16.4-14.7-27.5-32.8-30.7-38.4-3.2-5.6-.3-8.6 2.5-11.4 2.5-2.5 5.5-6.5 8.3-9.7 2.8-3.2 3.7-5.5 5.5-9.2 1.9-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 34.9 2.1 10.6-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
+                            </svg>
+                            <span class="lang-es">Consultar disponibilidad</span><span class="lang-en">Check
+                                availability</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="max-w-4xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
+                    <div class="bg-cal p-8 border border-carbon">
+                        <h4 class="font-serif text-2xl mb-4 text-carbon"><span class="lang-es">Nota sobre tu
+                                recorrido</span><span class="lang-en">Note on your journey</span></h4>
+                        <p class="lang-es text-gris text-sm leading-relaxed">Si comienzas por el Mapa Escrito y luego
+                            quieres pasar a una Sesión o al Proceso, descontaremos tu primera inversión del total. El
+                            camino es a tu ritmo.</p>
+                        <p class="lang-en text-gris text-sm leading-relaxed">If you start with the Written Map and later
+                            want to upgrade to a Session or the full Process, we will deduct your first investment from
+                            the total.</p>
+                    </div>
+                    <div class="bg-cal p-8 border border-carbon">
+                        <h4 class="font-serif text-2xl mb-4 text-carbon"><span class="lang-es">¿Ya trabajamos
+                                juntos?</span><span class="lang-en">Have we worked together?</span></h4>
+                        <p class="lang-es text-gris text-sm leading-relaxed">Si ya conoces tu mapa y necesitas una
+                            sesión puntual de seguimiento o actualización, escríbeme directamente para coordinar nuestro
+                            encuentro.</p>
+                        <p class="lang-en text-gris text-sm leading-relaxed">If you already know your map and need a
+                            follow-up or Solar Return session, write me directly to coordinate our meeting.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="experiencias" class="bg-experiencias-dark py-32 px-6 text-center">
-            <div class="max-w-3xl mx-auto reveal">
-                <h2 class="lang-es font-serif font-normal text-5xl md:text-6xl mb-12 text-cal">FE·NYA · Experiencias
-                </h2>
-                <h2 class="lang-en font-serif font-normal text-5xl md:text-6xl mb-12 text-cal">FE·NYA · Experiences</h2>
+        <section class="bg-header-roca py-32 px-6 text-center text-white border-t border-b border-line/20">
+            <div class="max-w-4xl mx-auto reveal">
+                <p class="text-xs uppercase tracking-[0.4em] text-dorado mb-6 font-bold"><span
+                        class="lang-es">Experiencia a medida</span><span class="lang-en">Tailor-made Experience</span>
+                </p>
+                <h2 class="lang-es font-serif font-normal text-5xl md:text-6xl mb-8">Sesiones Privadas y Grupos</h2>
+                <h2 class="lang-en font-serif font-normal text-5xl md:text-6xl mb-8">Private Sessions & Groups</h2>
 
-                <div class="lang-es space-y-6 text-lg text-cal/80 font-light mb-12">
-                    <p>FE·NYA colabora con algunos espacios seleccionados en Lanzarote, donde esta propuesta puede
-                        acompañar el tiempo de la estancia.</p>
-                    <p>Si llegaste hasta aquí a través de la información que encontraste en el lugar donde te alojas,
-                        puedes solicitar tu lectura directamente desde esta página.</p>
-                    <p>La entrega se realiza en formato digital, con prioridad, en un plazo estimado de 24–48 horas.</p>
-                    <p class="italic text-dorado mt-8 font-serif text-2xl">Una forma de incorporar al tiempo del viaje
-                        una lectura personal que invite a detenerse un momento y mirar la propia experiencia con otra
-                        perspectiva.</p>
+                <p class="lang-es text-xl text-white/90 font-light mb-12 leading-relaxed max-w-3xl mx-auto">
+                    Pensado para parejas, familias, amigos/as, comunidades y personas que quieren vivir y conocer más
+                    sobre astrología en su propio entorno o retiro.
+                </p>
+                <p class="lang-en text-xl text-white/90 font-light mb-12 leading-relaxed max-w-3xl mx-auto">
+                    Designed for couples, families, friends, communities, and people who want to experience and learn
+                    more about astrology in their own environment or retreat.
+                </p>
+
+                <p class="italic text-dorado font-serif text-2xl mb-12">
+                    <span class="lang-es">Experiencias diseñadas a medida para la dinámica de cada grupo.</span>
+                    <span class="lang-en">Experiences tailor-made for the dynamics of each group.</span>
+                </p>
+
+                <a href="https://wa.me/34622387870?text=Hola%20Graciana,%20quisiera%20informaci%C3%B3n%20sobre%20las%20sesiones%20para%20Grupos/Parejas."
+                    target="_blank"
+                    class="btn-editorial-wa btn-editorial-wa-light flex items-center justify-center gap-3">
+                    <svg class="wa-icon-btn" viewBox="0 0 448 512">
+                        <path
+                            d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.7 17.7 68.9 27.1 106.1 27.1h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.1 0-65.6-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.4-8.6-44.6-27.5-16.4-14.7-27.5-32.8-30.7-38.4-3.2-5.6-.3-8.6 2.5-11.4 2.5-2.5 5.5-6.5 8.3-9.7 2.8-3.2 3.7-5.5 5.5-9.2 1.9-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 34.9 2.1 10.6-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
+                    </svg>
+                    <span class="lang-es">Consultar disponibilidad</span><span class="lang-en">Check availability</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="proceso" class="bg-arena py-32 px-6 md:px-16 border-t border-line/20">
+            <div class="max-w-5xl mx-auto text-center reveal">
+                <h2 class="lang-es font-serif font-normal text-4xl md:text-5xl text-carbon mb-6">Cómo solicitar tu
+                    lectura</h2>
+                <h2 class="lang-en font-serif font-normal text-4xl md:text-5xl text-carbon mb-6">How to request your
+                    reading</h2>
+                <p class="lang-es text-lg text-gris mb-16 max-w-2xl mx-auto">Para asegurar la dedicación que cada mapa
+                    requiere, trabajo con cupos limitados cada mes. El proceso es simple:</p>
+                <p class="lang-en text-lg text-gris mb-16 max-w-2xl mx-auto">To ensure the dedication that each map
+                    requires, I work with limited spots each month. The process is simple:</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mb-16">
+                    <div class="bg-cal p-10 border border-line/20 rounded-sm shadow-sm">
+                        <div class="text-dorado font-serif text-6xl mb-6">1</div>
+                        <h3 class="font-serif text-2xl text-carbon mb-3"><span class="lang-es">Escríbeme</span><span
+                                class="lang-en">Write me</span></h3>
+                        <p class="text-gris text-sm leading-relaxed"><span class="lang-es">Toca el botón para consultar
+                                disponibilidad por WhatsApp.</span><span class="lang-en">Click the button to check
+                                availability via WhatsApp.</span></p>
+                    </div>
+                    <div class="bg-cal p-10 border border-line/20 rounded-sm shadow-sm">
+                        <div class="text-dorado font-serif text-6xl mb-6">2</div>
+                        <h3 class="font-serif text-2xl text-carbon mb-3"><span class="lang-es">Coordinamos</span><span
+                                class="lang-en">We coordinate</span></h3>
+                        <p class="text-gris text-sm leading-relaxed"><span class="lang-es">Vemos qué propuesta se adapta
+                                mejor a tu momento y agendamos tu lugar.</span><span class="lang-en">We see which
+                                proposal best suits your moment and schedule your spot.</span></p>
+                    </div>
+                    <div class="bg-cal p-10 border border-line/20 rounded-sm shadow-sm">
+                        <div class="text-dorado font-serif text-6xl mb-6">3</div>
+                        <h3 class="font-serif text-2xl text-carbon mb-3"><span class="lang-es">Tus datos</span><span
+                                class="lang-en">Your details</span></h3>
+                        <p class="text-gris text-sm leading-relaxed"><span class="lang-es">Te solicitaré tu fecha, hora
+                                y lugar de nacimiento para comenzar el estudio.</span><span class="lang-en">I will
+                                request your date, time, and place of birth to begin the study.</span></p>
+                    </div>
                 </div>
 
-                <div class="lang-en space-y-6 text-lg text-cal/80 font-light mb-12">
-                    <p>FE·NYA collaborates with selected spaces in Lanzarote, where this proposal can accompany your
-                        stay.</p>
-                    <p>If you arrived here through information found at your accommodation, you can request your reading
-                        directly from this page.</p>
-                    <p>Delivery is made in digital format, with priority, within an estimated 24–48 hours.</p>
-                    <p class="italic text-dorado mt-8 font-serif text-2xl">A way to incorporate a personal reading into
-                        your travel time that invites you to pause for a moment and look at your own experience from
-                        another perspective.</p>
-                </div>
-
-                <a href="services.html" class="btn-editorial btn-editorial-light"><span class="lang-es">Solicitar
-                        lectura</span><span class="lang-en">Request reading</span></a>
+                <a href="https://wa.me/34622387870?text=Hola%20Graciana,%20vengo%20de%20la%20web%20y%20me%20gustar%C3%ADa%20consultar%20disponibilidad%20para%20una%20lectura."
+                    target="_blank"
+                    class="btn-editorial-wa w-full md:w-auto flex items-center justify-center gap-3 mx-auto">
+                    <svg class="wa-icon-btn" viewBox="0 0 448 512">
+                        <path
+                            d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.7 17.7 68.9 27.1 106.1 27.1h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.1 0-65.6-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.4-8.6-44.6-27.5-16.4-14.7-27.5-32.8-30.7-38.4-3.2-5.6-.3-8.6 2.5-11.4 2.5-2.5 5.5-6.5 8.3-9.7 2.8-3.2 3.7-5.5 5.5-9.2 1.9-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 34.9 2.1 10.6-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
+                    </svg>
+                    <span class="lang-es">Consultar disponibilidad</span><span class="lang-en">Check availability</span>
+                </a>
             </div>
         </section>
     </main>
 
-    <footer class="bg-header-roca py-40 px-6 text-center text-white border-t border-carbon">
+    <footer class="bg-header-roca py-32 px-6 text-center text-white border-t border-carbon">
         <div class="max-w-4xl mx-auto reveal">
             <div class="font-serif font-normal text-6xl md:text-8xl tracking-widest mb-6">
                 FE<span class="punto-dorado"></span>NYA
@@ -277,7 +537,7 @@
                         class="hover:text-dorado transition-colors">@fenyastrologia</a></p>
             </div>
 
-            <div class="space-y-4 text-xs font-medium uppercase tracking-[0.2em] text-white/50">
+            <div class="space-y-6 text-xs font-medium uppercase tracking-[0.2em] text-white/50">
                 <p>
                     <span class="lang-es">© FE·NYA | Proyecto creado por Graciana Virasoro</span>
                     <span class="lang-en">© FE·NYA | Project created by Graciana Virasoro</span>
