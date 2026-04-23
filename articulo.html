@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FE·NYA | Artículo</title>
+
+    <meta property="og:title" content="FE·NYA | Artículo" />
+    <meta property="og:description" content="Artículo sobre astrología y energías esenciales" />
+    <meta property="og:image" content="img/logo-compartir.jpeg" />
+    <meta property="og:url" content="https://fenya.es/articulo.html" />
+    <meta property="og:type" content="article" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { cal: "#FBFBF9", arena: "#F4F1EB", carbon: "#181818", gris: "#5C5C5C", dorado: "#9B8258" },
+                    fontFamily: { serif: ['Playfair Display', 'serif'], sans: ['Montserrat', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .wa-float:hover {
+            transform: scale(1.1);
+        }
+
+        .wa-icon-main {
+            width: 32px;
+            height: 32px;
+            fill: currentColor;
+        }
+
+        .article-content {
+            font-size: 1.125rem;
+            line-height: 1.8;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin: 2rem 0 1rem 0;
+            color: #181818;
+            font-weight: 500;
+        }
+
+        .article-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin: 1.5rem 0 0.75rem 0;
+            color: #181818;
+            font-weight: 500;
+        }
+
+        .article-content ul,
+        .article-content ol {
+            margin: 1.5rem 0 1.5rem 2rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.75rem;
+        }
+
+        .article-content blockquote {
+            border-left: 4px solid #9B8258;
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #5C5C5C;
+        }
+
+        .article-content em {
+            font-style: italic;
+        }
+
+        .article-content strong {
+            font-weight: 600;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #9B8258;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans font-light text-carbon bg-cal">
+
+    <a href="https://wa.me/34622387870" class="wa-float" target="_blank" aria-label="WhatsApp">
+        <svg class="wa-icon-main" viewBox="0 0 448 512">
+            <path
+                d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.7 17.7 68.9 27.1 106.1 27.1h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.1 0-65.6-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-5.5-2.8-23.4-8.6-44.6-27.5-16.4-14.7-27.5-32.8-30.7-38.4-3.2-5.6-.3-8.6 2.5-11.4 2.5-2.5 5.5-6.5 8.3-9.7 2.8-3.2 3.7-5.5 5.5-9.2 1.9-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 13.2 5.8 23.5 9.2 31.5 11.8 13.3 4.2 25.4 3.6 34.9 2.1 10.6-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
+        </svg>
+    </a>
+
+    <header
+        class="fixed top-0 w-full flex justify-between items-center px-8 py-5 bg-header-roca z-50 text-white shadow-sm">
+        <a href="index.html"
+            class="font-serif text-2xl tracking-widest uppercase hover:text-dorado transition-colors font-normal">
+            FE<span class="punto-dorado"></span>NYA
+        </a>
+        <nav class="hidden md:flex gap-10 text-[0.7rem] uppercase tracking-[0.2em] font-medium">
+            <a href="index.html" class="hover:text-dorado transition-colors"><span class="lang-es">Inicio</span><span
+                    class="lang-en">Home</span></a>
+            <a href="index.html#fundadora" class="hover:text-dorado transition-colors"><span class="lang-es">La
+                    Fundadora</span><span class="lang-en">Founder</span></a>
+            <a href="index.html#servicios" class="hover:text-dorado transition-colors"><span class="lang-es">Lecturas y
+                    Servicios</span><span class="lang-en">Readings & Services</span></a>
+            <a href="diario.html" class="hover:text-dorado transition-colors"><span class="lang-es">Diario</span><span
+                    class="lang-en">Blog</span></a>
+        </nav>
+        <div class="flex gap-4 text-xs tracking-widest text-white/50 font-medium">
+            <button onclick="setLang('es')" id="btn-es" class="hover:text-white transition-colors">ES</button>
+            <span class="opacity-30">|</span>
+            <button onclick="setLang('en')" id="btn-en" class="hover:text-white transition-colors">EN</button>
+        </div>
+    </header>
+
+    <main class="pt-32">
+        <!-- Loading State -->
+        <section id="loading" class="py-20 px-6 md:px-16 bg-cal">
+            <div class="max-w-2xl mx-auto text-center py-20">
+                <div class="loading-spinner mx-auto mb-4"></div>
+                <p class="text-gris"><span class="lang-es">Cargando artículo...</span><span class="lang-en">Loading
+                        article...</span></p>
+            </div>
+        </section>
+
+        <!-- Article Content -->
+        <article id="article-container" class="hidden py-20 px-6 md:px-16 bg-cal">
+            <div class="max-w-2xl mx-auto">
+                <!-- Header Info -->
+                <div class="mb-12 pb-12 border-b border-line/20">
+                    <p id="article-date" class="text-xs uppercase tracking-widest text-dorado font-medium mb-4"></p>
+                    <h1 id="article-title" class="font-serif font-normal text-5xl md:text-6xl text-carbon mb-6"></h1>
+                    <p id="article-excerpt" class="text-xl text-gris italic font-serif"></p>
+                </div>
+
+                <!-- Featured Image -->
+                <div id="featured-image-container" class="mb-12 hidden">
+                    <img id="featured-image" src="" alt="" class="w-full rounded-sm">
+                    <p id="featured-image-caption" class="text-xs text-gris italic mt-3"></p>
+                </div>
+
+                <!-- Content -->
+                <div id="article-content" class="article-content text-gris mb-16"></div>
+
+                <!-- Author Signature -->
+                <div class="pt-12 border-t border-line/20">
+                    <div class="max-w-md">
+                        <p class="text-sm font-medium text-carbon mb-2">
+                            <span class="lang-es">Escrito por</span>
+                            <span class="lang-en">Written by</span>
+                        </p>
+                        <p class="font-serif text-2xl text-dorado mb-4">Graciana Virasoro</p>
+                        <p class="text-sm text-gris leading-relaxed">
+                            <span class="lang-es">Fundadora de FE·NYA. Astróloga especializada en lectura simbólica y
+                                Energías Esenciales.</span>
+                            <span class="lang-en">Founder of FE·NYA. Astrologer specialized in symbolic reading and
+                                Essential Energies.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Back to Blog -->
+                <div class="mt-16 pt-12 border-t border-line/20">
+                    <a href="diario.html"
+                        class="inline-flex items-center text-dorado font-medium uppercase text-sm tracking-widest hover:text-carbon transition-colors">
+                        <span>←</span>
+                        <span class="ml-3"><span class="lang-es">Volver al diario</span><span class="lang-en">Back to
+                                blog</span></span>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Error State -->
+        <section id="error-state" class="hidden py-20 px-6 md:px-16 bg-cal">
+            <div class="max-w-2xl mx-auto text-center py-20">
+                <h2 class="font-serif text-4xl text-carbon mb-4">
+                    <span class="lang-es">Artículo no encontrado</span>
+                    <span class="lang-en">Article not found</span>
+                </h2>
+                <p class="text-gris mb-8">
+                    <span class="lang-es">Lo sentimos, no pudimos encontrar el artículo que buscas.</span>
+                    <span class="lang-en">Sorry, we couldn't find the article you're looking for.</span>
+                </p>
+                <a href="diario.html"
+                    class="inline-block px-8 py-3 bg-dorado text-white font-medium uppercase tracking-widest text-sm hover:bg-carbon transition-colors">
+                    <span class="lang-es">Volver al diario</span>
+                    <span class="lang-en">Back to blog</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-header-roca py-32 px-6 text-center text-white border-t border-carbon">
+        <div class="max-w-4xl mx-auto">
+            <div class="font-serif font-normal text-6xl md:text-8xl tracking-widest mb-6">
+                FE<span class="punto-dorado"></span>NYA
+            </div>
+            <p class="lang-es text-[0.65rem] font-medium uppercase tracking-[0.4em] text-dorado mb-16">Lo humano del
+                cosmos</p>
+            <p class="lang-en text-[0.65rem] font-medium uppercase tracking-[0.4em] text-dorado mb-16">The human side of
+                the cosmos</p>
+
+            <div class="space-y-4 mb-20 text-lg font-light tracking-wide">
+                <p><a href="mailto:fenyaastrology@gmail.com"
+                        class="hover:text-dorado transition-colors">fenyaastrology@gmail.com</a></p>
+                <p><a href="https://instagram.com/fenyastrologia" target="_blank"
+                        class="hover:text-dorado transition-colors">@fenyastrologia</a></p>
+            </div>
+
+            <div class="space-y-6 text-xs font-medium uppercase tracking-[0.2em] text-white/50">
+                <p>
+                    <span class="lang-es">© FE·NYA | Proyecto creado por Graciana Virasoro</span>
+                    <span class="lang-en">© FE·NYA | Project created by Graciana Virasoro</span>
+                </p>
+                <p>
+                    <a href="https://www.doyo.pro" target="_blank"
+                        class="hover:text-dorado transition-colors">Desarrollado por Doyo.Pro</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // ============================================
+        // SUPABASE CONFIGURATION
+        // ============================================
+        const SUPABASE_URL = 'https://ofqtapqrymewgxcaomdd.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9mcXRhcHFyeW1ld2dxeGNhb21kZCIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzAzNDI4ODAwLCJleHAiOjE4NjE0MzI4MDB9.YyqDCWTZwNMZ15l9Z0FEbQ4vT0aQlhR8N0j8j0lRwKA';
+        const FENYA_TENANT_ID = '20000000-0000-0000-0000-000000000001';
+
+        const { createClient } = window.supabase;
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // ============================================
+        // GET SLUG FROM URL
+        // ============================================
+        function getSlugFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('slug');
+        }
+
+        // ============================================
+        // LOAD ARTICLE
+        // ============================================
+        async function loadArticle() {
+            const slug = getSlugFromUrl();
+
+            if (!slug) {
+                showError();
+                return;
+            }
+
+            try {
+                const { data, error } = await supabase
+                    .from('v2_enterprise.blogpost')
+                    .select('*')
+                    .eq('tenant_id', FENYA_TENANT_ID)
+                    .eq('slug', slug)
+                    .eq('status', 'published')
+                    .single();
+
+                if (error || !data) {
+                    showError();
+                    return;
+                }
+
+                renderArticle(data);
+                updatePageMeta(data);
+            } catch (err) {
+                console.error('Error:', err);
+                showError();
+            }
+        }
+
+        function renderArticle(post) {
+            const lang = document.documentElement.getAttribute('data-lang') || 'es';
+            const title = lang === 'es' ? post.title_es : post.title_en;
+            const excerpt = lang === 'es' ? post.excerpt_es : post.excerpt_en;
+            const content = lang === 'es' ? post.content_es : post.content_en;
+
+            const publishedDate = new Date(post.published_at).toLocaleDateString(
+                lang === 'es' ? 'es-ES' : 'en-US',
+                { year: 'numeric', month: 'long', day: 'numeric' }
+            );
+
+            document.getElementById('article-date').textContent = publishedDate;
+            document.getElementById('article-title').textContent = title;
+            document.getElementById('article-excerpt').textContent = excerpt;
+            document.getElementById('article-content').innerHTML = content;
+
+            // Featured Image
+            if (post.featured_image) {
+                const container = document.getElementById('featured-image-container');
+                document.getElementById('featured-image').src = post.featured_image;
+                document.getElementById('featured-image').alt = title;
+                if (post.featured_image_caption) {
+                    document.getElementById('featured-image-caption').textContent =
+                        lang === 'es' ? post.featured_image_caption : post.featured_image_caption;
+                }
+                container.classList.remove('hidden');
+            }
+
+            // Show article, hide loading
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('article-container').classList.remove('hidden');
+        }
+
+        function updatePageMeta(post) {
+            const lang = document.documentElement.getAttribute('data-lang') || 'es';
+            const title = lang === 'es' ? post.title_es : post.title_en;
+            const excerpt = lang === 'es' ? post.excerpt_es : post.excerpt_en;
+
+            document.title = `FE·NYA | ${title}`;
+            document.querySelector('meta[property="og:title"]').content = `FE·NYA | ${title}`;
+            document.querySelector('meta[property="og:description"]').content = excerpt;
+            if (post.featured_image) {
+                document.querySelector('meta[property="og:image"]').content = post.featured_image;
+            }
+        }
+
+        function showError() {
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('error-state').classList.remove('hidden');
+        }
+
+        // Load article on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadArticle();
+        });
+
+        // Re-render when language changes
+        const originalSetLang = window.setLang;
+        window.setLang = function (lang) {
+            originalSetLang(lang);
+            const slug = getSlugFromUrl();
+            if (slug) {
+                loadArticle();
+            }
+        };
+    </script>
+</body>
+
+</html>
