@@ -172,7 +172,7 @@
         const FENYA_TENANT_ID = "20000000-0000-0000-0000-000000000001";
 
         const { createClient } = window.supabase;
-        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { db: { schema: 'v2_enterprise' } });
 
         // ============================================
         // LOAD BLOG POSTS
@@ -180,7 +180,7 @@
         async function loadBlogPosts() {
             try {
                 const { data, error } = await supabaseClient
-                    .from('v2_enterprise.blogpost')
+                    .from('blog_posts')
                     .select('*')
                     .eq('tenant_id', FENYA_TENANT_ID)
                     .eq('status', 'published')
