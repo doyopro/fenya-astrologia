@@ -54,16 +54,16 @@ body {
 /* --- PUNTO DORADO LISO (Logo FE·NYA) --- */
 .punto-dorado {
     display: inline-block;
-    width: 0.16em;
-    height: 0.16em;
+    width: 0.14em;
+    height: 0.14em;
     background-color: var(--accent-dorado);
     border-radius: 50%;
+    margin: 0 0.06em;
     position: relative;
-    top: -0.25em;
-    /* Centrado óptico exacto para Playfair Display con tracking expandido */
-    margin-left: -0.22em;
-    margin-right: -0.22em;
+    top: -0.24em;
+    /* Centrado óptico exacto para Playfair Display */
     box-shadow: none;
+    /* Liso y sin relieves */
 }
 
 /* --- MARCO FUNDADORA --- */
